@@ -7,6 +7,7 @@ Add yourself as a contributor to this project as a Markdown link that links your
 
 ## Cohort Participants
 
+- [Cristina Padilla](https://github.com/Mama-simba) 💃
 - [Teri Eyenike](https://github.com/terieyenike)
 
 ## Mentors
