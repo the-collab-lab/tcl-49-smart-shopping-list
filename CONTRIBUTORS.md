@@ -12,6 +12,7 @@ Add yourself as a contributor to this project as a Markdown link that links your
 - [Debbie Otuagomah](https://github.com/thatgirldorian) 😅
 
 ## Mentors
+- [Golfo Vasiliou](https://github.com/faysvas) 🐶
 
 ## Code of Conduct Contacts
 
