@@ -22,6 +22,7 @@ export function Layout() {
 					<Outlet />
 				</main>
 				<nav className="Nav">
+					{/* Use NavLink to build nav links */}
 					<NavLink to="/Home.jsx" className="Nav-link">
 						Home
 					</NavLink>
