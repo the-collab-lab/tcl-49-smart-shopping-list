@@ -8,8 +8,8 @@ Add yourself as a contributor to this project as a Markdown link that links your
 
 - [Cristina Padilla](https://github.com/Mama-simba) 💃
 - [Teri Eyenike](https://github.com/terieyenike) 🦘
-- [Debbie Otuagomah](https://github.com/thatgirldorian) 😅
-- [Victoria Emoka](https://github.com/mohanner-coder) 
+- [Debbie Otuagomah](https://github.com/thatgirldorian) 📚
+- [Victoria Emoka](https://github.com/mohanner-coder)
 
 ## Mentors
 
