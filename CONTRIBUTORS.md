@@ -12,7 +12,6 @@ Add yourself as a contributor to this project as a Markdown link that links your
 - # [Victoria Emoka](https://github.com/mohanner-coder) 🐶
 - [Debbie Otuagomah](https://github.com/thatgirldorian) 📚
 - [Victoria Emoka](https://github.com/mohanner-coder)
-  > > > > > > > ad8730c62b007cc8bfac83d8452a7f157d691dd9
 
 ## Mentors
 
