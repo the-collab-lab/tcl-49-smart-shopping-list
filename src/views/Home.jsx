@@ -6,6 +6,7 @@ export function Home() {
 			<p>
 				Hello from the home (<code>/</code>) page!
 			</p>
+			<button>Create list</button>
 		</div>
 	);
 }
