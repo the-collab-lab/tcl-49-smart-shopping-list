@@ -1,11 +1,8 @@
-const FormInput = () => {
+export function FormInput({ label, ...otherProps }) {
 	return (
-		<>
-			<div>
-				<p>form input</p>
-			</div>
-		</>
+		<div className="group">
+			<label htmlFor="item">{label}</label>
+			<input {...otherProps} />
+		</div>
 	);
-};
-
-export default FormInput;
+}
