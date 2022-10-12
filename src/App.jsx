@@ -25,6 +25,15 @@ export function App() {
 		'tcl-shopping-list-token',
 	);
 
+	function handleClick() {
+		const token = generateToken();
+		console.log(token);
+
+		//if user doesn't have a token, generates new token, saves and creates new list
+		//if user has a token, redirects to List
+		// how to define the users and use the setListToken function here?
+	}
+
 	useEffect(() => {
 		if (!listToken) return;
 
@@ -53,7 +62,7 @@ export function App() {
 		<Router>
 			<Routes>
 				<Route path="/" element={<Layout />}>
-					<Route index element={<Home />} />
+					<Route index element={<Home handleClick={handleClick} />} />
 					<Route path="/list" element={<List data={data} />} />
 					<Route path="/add-item" element={<AddItem />} />
 				</Route>
