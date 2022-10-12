@@ -1,21 +1,93 @@
-// import { useState } from 'react';
-import Button from '../components/button/button.component';
+import { useState } from 'react';
+import { Button, FormInput } from '../components';
+
+// const defaultFormFields = {
+// 	displayName: '',
+// 	selectedOption: 'kindOfSoon',
+// 	soon: '',
+// 	kindOfSoon: '',
+// 	notSoon: '',
+// };
 export function AddItem() {
-	// const [value, setValue] = useState(false);
+	// const [formFields, setFormFields] = useState(defaultFormFields);
+	// const { displayName, selectedOption, soon, kindOfSoon, notSoon } = formFields;
+
+	const [displayName, setDisplayName] = useState('');
+	const [selectedOption, setSelectedOption] = useState('soon');
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
-		console.log('it is working!!!');
+		resetFormFields();
+		console.log(
+			`${displayName} ${selectedOption} successfully saved in the database`,
+		);
 	};
 
-	// const handleChange = () => {
-	// 	setValue(!value);
-	// };
+	const resetFormFields = () => {
+		setDisplayName('');
+		setSelectedOption('soon');
+	};
+
+	const handleChange = (e) => {
+		const { value } = e.target;
+		setDisplayName(value);
+	};
+
+	const onValueChange = (e) => {
+		const { value } = e.target;
+		setSelectedOption(value);
+	};
 
 	return (
 		<div className="shopping-form-container">
-			<h2>Smart Shopping List</h2>
 			<form onSubmit={handleSubmit}>
+				<FormInput
+					label="Item name"
+					type="text"
+					required
+					onChange={handleChange}
+					name="displayName"
+					id="item"
+					value={displayName}
+				/>
+				<div className="select-next-purchase-buttons">
+					<fieldset>
+						<legend>How soon will you buy this again?</legend>
+						<div className="radio-btn">
+							<label>
+								<input
+									type="radio"
+									value="soon"
+									checked={selectedOption === 'soon'}
+									onChange={onValueChange}
+								/>
+								Soon
+							</label>
+						</div>
+						<div className="radio-btn">
+							<label>
+								<input
+									type="radio"
+									value="kindOfSoon"
+									checked={selectedOption === 'kindOfSoon'}
+									onChange={onValueChange}
+								/>
+								Kind of Soon
+							</label>
+						</div>
+						<div className="radio-btn">
+							<label>
+								<input
+									type="radio"
+									value="notSoon"
+									checked={selectedOption === 'notSoon'}
+									onChange={onValueChange}
+								/>
+								Not Soon
+							</label>
+						</div>
+					</fieldset>
+				</div>
 				<Button type="submit">Add Item</Button>
 			</form>
 		</div>
