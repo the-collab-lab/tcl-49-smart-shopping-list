@@ -1,9 +1,8 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useState } from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { Redirect } from 'react-router-dom';
+import { BrowserRouter } from 'react-router-dom';
 import { AddItem, Home, Layout, List } from './views';
-
+import { Routes, Route, Navigate } from 'react-router-dom';
 import { getItemData, streamListItems } from './api';
 import { useStateWithStorage } from './utils';
 import { generateToken } from '@the-collab-lab/shopping-list-utils';
@@ -28,6 +27,7 @@ export function App() {
 
 	function handleClick() {
 		const token = generateToken();
+		<Navigate to="/list" replace={true} />;
 		console.log(token);
 
 		//if user doesn't have a token, generates new token, saves and creates new list
@@ -42,10 +42,8 @@ export function App() {
 				'tcl-shopping-list-token',
 				JSON.stringify(listToken),
 			);
-			// history.push
 		} else {
 			setListToken(localStorage.getItem('tcl-shopping-list-token'));
-			// return <Redirect to='/list' />
 		}
 
 		/**
@@ -70,7 +68,7 @@ export function App() {
 	}, [listToken]);
 
 	return (
-		<Router>
+		<BrowserRouter>
 			<Routes>
 				<Route path="/" element={<Layout />}>
 					<Route index element={<Home handleClick={handleClick} />} />
@@ -78,6 +76,6 @@ export function App() {
 					<Route path="/add-item" element={<AddItem />} />
 				</Route>
 			</Routes>
-		</Router>
+		</BrowserRouter>
 	);
 }
