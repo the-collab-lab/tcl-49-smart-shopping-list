@@ -1,10 +1,13 @@
 import { useState } from 'react';
 import { Button, FormInput } from '../components';
+import { Link } from 'react-router-dom';
 
 export function AddItem() {
 	const [displayName, setDisplayName] = useState('');
 	const [selectedOption, setSelectedOption] = useState('soon');
 	const [errorMsg, setErrorMsg] = useState('');
+	const [successMsg, setSuccessMsg] = useState('');
+	// const [isPending, setIsPending] = useState(false);
 
 	const resetFormFields = () => {
 		setDisplayName('');
@@ -17,12 +20,11 @@ export function AddItem() {
 		if (!displayName) {
 			setErrorMsg('oops, item not saved to database. Enter an item');
 			return;
+		} else {
+			setSuccessMsg(`${displayName} successfully saved to the database`);
 		}
 		resetFormFields();
 		setErrorMsg('');
-		console.log(
-			`${displayName} ${selectedOption} successfully saved in the database`,
-		);
 	};
 
 	const handleChange = (e) => {
@@ -37,57 +39,67 @@ export function AddItem() {
 
 	return (
 		<div className="shopping-form-container">
-			<form onSubmit={handleSubmit}>
-				<FormInput
-					label="Item name"
-					type="text"
-					// required
-					onChange={handleChange}
-					name="displayName"
-					id="item"
-					value={displayName}
-				/>
-				{errorMsg && <p>{errorMsg}</p>}
-				<div className="select-next-purchase-buttons">
-					<fieldset>
-						<legend>How soon will you buy this again?</legend>
-						<div className="radio-btn">
-							<label>
-								<input
-									type="radio"
-									value="soon"
-									checked={selectedOption === 'soon'}
-									onChange={onValueChange}
-								/>
-								Soon
-							</label>
-						</div>
-						<div className="radio-btn">
-							<label>
-								<input
-									type="radio"
-									value="kindOfSoon"
-									checked={selectedOption === 'kindOfSoon'}
-									onChange={onValueChange}
-								/>
-								Kind of Soon
-							</label>
-						</div>
-						<div className="radio-btn">
-							<label>
-								<input
-									type="radio"
-									value="notSoon"
-									checked={selectedOption === 'notSoon'}
-									onChange={onValueChange}
-								/>
-								Not Soon
-							</label>
-						</div>
-					</fieldset>
+			{successMsg ? (
+				<div>
+					<h2>{successMsg}</h2>
+					<div>
+						<Link to="/list">
+							<button>View the list</button>
+						</Link>
+					</div>
 				</div>
-				<Button type="submit">Add Item</Button>
-			</form>
+			) : (
+				<form onSubmit={handleSubmit}>
+					<FormInput
+						label="Item name"
+						type="text"
+						onChange={handleChange}
+						name="displayName"
+						id="item"
+						value={displayName}
+					/>
+					{errorMsg && <p>{errorMsg}</p>}
+					<div className="select-next-purchase-buttons">
+						<fieldset>
+							<legend>How soon will you buy this again?</legend>
+							<div className="radio-btn">
+								<label>
+									<input
+										type="radio"
+										value="soon"
+										checked={selectedOption === 'soon'}
+										onChange={onValueChange}
+									/>
+									Soon
+								</label>
+							</div>
+							<div className="radio-btn">
+								<label>
+									<input
+										type="radio"
+										value="kindOfSoon"
+										checked={selectedOption === 'kindOfSoon'}
+										onChange={onValueChange}
+									/>
+									Kind of Soon
+								</label>
+							</div>
+							<div className="radio-btn">
+								<label>
+									<input
+										type="radio"
+										value="notSoon"
+										checked={selectedOption === 'notSoon'}
+										onChange={onValueChange}
+									/>
+									Not Soon
+								</label>
+							</div>
+						</fieldset>
+					</div>
+					<Button type="submit">Add Item</Button>
+				</form>
+			)}
 		</div>
 	);
 }
