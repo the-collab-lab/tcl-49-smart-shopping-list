@@ -1,6 +1,7 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-
+import { Redirect } from 'react-router-dom';
 import { AddItem, Home, Layout, List } from './views';
 
 import { getItemData, streamListItems } from './api';
@@ -21,7 +22,7 @@ export function App() {
 	 */
 
 	const [listToken, setListToken] = useStateWithStorage(
-		'null',
+		null,
 		'tcl-shopping-list-token',
 	);
 
@@ -30,15 +31,25 @@ export function App() {
 		console.log(token);
 
 		//if user doesn't have a token, generates new token, saves and creates new list
+		// console.log(setListToken(token));
 		//if user has a token, redirects to List
 		// how to define the users and use the setListToken function here?
 	}
 
 	useEffect(() => {
-		if (!listToken) return;
+		if (!listToken) {
+			localStorage.setItem(
+				'tcl-shopping-list-token',
+				JSON.stringify(listToken),
+			);
+			// history.push
+		} else {
+			setListToken(localStorage.getItem('tcl-shopping-list-token'));
+			// return <Redirect to='/list' />
+		}
 
 		/**
-		 * streamListItems` takes a `listToken` so it can commuinicate
+		 * streamListItems` takes a `listToken` so it can communicate
 		 * with our database; then calls a callback function with
 		 * a `snapshot` from the database.
 		 *
