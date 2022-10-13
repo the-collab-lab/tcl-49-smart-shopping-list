@@ -1,31 +1,28 @@
 import { useState } from 'react';
 import { Button, FormInput } from '../components';
 
-// const defaultFormFields = {
-// 	displayName: '',
-// 	selectedOption: 'kindOfSoon',
-// 	soon: '',
-// 	kindOfSoon: '',
-// 	notSoon: '',
-// };
 export function AddItem() {
-	// const [formFields, setFormFields] = useState(defaultFormFields);
-	// const { displayName, selectedOption, soon, kindOfSoon, notSoon } = formFields;
-
 	const [displayName, setDisplayName] = useState('');
 	const [selectedOption, setSelectedOption] = useState('soon');
-
-	const handleSubmit = (e) => {
-		e.preventDefault();
-		resetFormFields();
-		console.log(
-			`${displayName} ${selectedOption} successfully saved in the database`,
-		);
-	};
+	const [errorMsg, setErrorMsg] = useState('');
 
 	const resetFormFields = () => {
 		setDisplayName('');
 		setSelectedOption('soon');
+	};
+
+	const handleSubmit = (e) => {
+		e.preventDefault();
+
+		if (!displayName) {
+			setErrorMsg('oops you need to provide an item');
+			return;
+		}
+		resetFormFields();
+		setErrorMsg('');
+		console.log(
+			`${displayName} ${selectedOption} successfully saved in the database`,
+		);
 	};
 
 	const handleChange = (e) => {
@@ -44,12 +41,13 @@ export function AddItem() {
 				<FormInput
 					label="Item name"
 					type="text"
-					required
+					// required
 					onChange={handleChange}
 					name="displayName"
 					id="item"
 					value={displayName}
 				/>
+				{errorMsg && <p>{errorMsg}</p>}
 				<div className="select-next-purchase-buttons">
 					<fieldset>
 						<legend>How soon will you buy this again?</legend>
@@ -92,47 +90,4 @@ export function AddItem() {
 			</form>
 		</div>
 	);
-	// return (
-	// 	<div className="shopping-list">
-	// 		<form onSubmit={handleSubmit}>
-	// 			<div>
-	// 				<h4>Item name:</h4>
-	// 			</div>
-
-	// 			<div className="search__input">
-	// 				{' '}
-	// 				<input className="input" type="text" placeholder=" Eggs" />{' '}
-	// 			</div>
-	// 			<p>How soon will you buy this again?</p>
-
-	// 			<label>
-	// 				<input type="radio" value={'soon'} onChange={handleChange} />
-	// 				soon
-	// 			</label>
-	// 			<br />
-	// 			<br />
-	// 			<label>
-	// 				<input type="radio" value={'Kind of soon'} onChange={handleChange} />
-	// 				Kind of soon
-	// 			</label>
-	// 			<br />
-	// 			<br />
-
-	// 			<label>
-	// 				<input type="radio" value={'not soon'} onChange={handleChange} />
-	// 				Not soon
-	// 			</label>
-	// 			<br />
-	// 			<br />
-	// 			<br />
-	// 			<br />
-
-	// 			<div>
-	// 				{' '}
-	// 				<button type="submit">List</button>
-	// 			</div>
-	// 			<button type="submit">add item</button>
-	// 		</form>
-	// 	</div>
-	// );
 }
