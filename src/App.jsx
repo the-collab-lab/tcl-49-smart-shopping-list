@@ -20,52 +20,44 @@ export function App() {
 	 * to create and join a new list.
 	 */
 
-	const [listToken, setListToken] = useStateWithStorage(
-		null,
-		'tcl-shopping-list-token',
-	);
+	const [listToken, setListToken] = useStateWithStorage(null);
 
 	function handleClick() {
-		generateToken();
-		navigate('/list');
-
-		//if user doesn't have a token, generates new token, saves and creates new list
-		// console.log(setListToken(token));
-		//if user has a token, redirects to List
-		// how to define the users and use the setListToken function here?
-	}
-
-	useEffect(() => {
 		if (!listToken) {
-			localStorage.setItem(
-				'tcl-shopping-list-token',
-				JSON.stringify(listToken),
-			);
+			const token = generateToken();
+			// console.log(token);
+			localStorage.setItem('tcl-shopping-list-token', token);
+			setListToken(token);
 			navigate('/list');
 		} else {
-			setListToken(localStorage.getItem('tcl-shopping-list-token'));
-			// navigate('/list')
+			navigate('/list');
 		}
-		/**
-		 * streamListItems` takes a `listToken` so it can communicate
-		 * with our database; then calls a callback function with
-		 * a `snapshot` from the database.
-		 *
-		 * Refer to `api/firebase.js`.
-		 */
-		return streamListItems(listToken, (snapshot) => {
-			/**
-			 * Read the documents in the snapshot and do some work
-			 * on them, so we can save them in our React state.
-			 *
-			 * Refer to `api/firebase.js`
-			 */
-			const nextData = getItemData(snapshot);
+	}
 
-			/** Finally, we update our React state. */
-			setData(nextData);
-		});
-	}, [listToken]);
+	// useEffect(() => {
+	// 	// if (!listToken)
+
+	// 	// }
+	// 	/**
+	// 	 * streamListItems` takes a `listToken` so it can communicate
+	// 	 * with our database; then calls a callback function with
+	// 	 * a `snapshot` from the database.
+	// 	 *
+	// 	 * Refer to `api/firebase.js`.
+	// 	 */
+	// 	return streamListItems(listToken, (snapshot) => {
+	// 		/**
+	// 		 * Read the documents in the snapshot and do some work
+	// 		 * on them, so we can save them in our React state.
+	// 		 *
+	// 		 * Refer to `api/firebase.js`
+	// 		 */
+	// 		const nextData = getItemData(snapshot);
+
+	// 		/** Finally, we update our React state. */
+	// 		setData(nextData);
+	// 	});
+	// }, [listToken]);
 
 	return (
 		<Routes>
