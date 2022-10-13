@@ -26,7 +26,7 @@ export function App() {
 	);
 
 	function handleClick() {
-		const token = generateToken();
+		generateToken();
 		navigate('/list');
 
 		//if user doesn't have a token, generates new token, saves and creates new list
@@ -41,10 +41,11 @@ export function App() {
 				'tcl-shopping-list-token',
 				JSON.stringify(listToken),
 			);
+			navigate('/list');
 		} else {
 			setListToken(localStorage.getItem('tcl-shopping-list-token'));
+			// navigate('/list')
 		}
-
 		/**
 		 * streamListItems` takes a `listToken` so it can communicate
 		 * with our database; then calls a callback function with
