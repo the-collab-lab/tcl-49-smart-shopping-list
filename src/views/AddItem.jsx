@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Button, FormInput } from '../components';
 import { Link } from 'react-router-dom';
+import { addItem } from '../api';
 
 export function AddItem() {
 	const [displayName, setDisplayName] = useState('');
@@ -14,7 +15,7 @@ export function AddItem() {
 		setSelectedOption('soon');
 	};
 
-	const handleSubmit = (e) => {
+	const handleSubmit = async (e) => {
 		e.preventDefault();
 
 		if (!displayName) {
@@ -25,6 +26,7 @@ export function AddItem() {
 		}
 		resetFormFields();
 		setErrorMsg('');
+		console.log(addItem);
 	};
 
 	const handleChange = (e) => {
