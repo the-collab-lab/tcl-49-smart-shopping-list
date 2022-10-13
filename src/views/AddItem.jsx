@@ -15,7 +15,7 @@ export function AddItem() {
 		e.preventDefault();
 
 		if (!displayName) {
-			setErrorMsg('oops you need to provide an item');
+			setErrorMsg('oops, item not saved to database. Enter an item');
 			return;
 		}
 		resetFormFields();
