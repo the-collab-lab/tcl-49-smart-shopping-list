@@ -32,11 +32,13 @@ export function AddItem() {
 	const handleChange = (e) => {
 		const { value } = e.target;
 		setDisplayName(value);
+		console.log(value);
 	};
 
 	const onValueChange = (e) => {
 		const { value } = e.target;
 		setSelectedOption(value);
+		console.log(value);
 	};
 
 	return (
