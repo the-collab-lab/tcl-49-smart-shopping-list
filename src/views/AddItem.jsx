@@ -62,7 +62,7 @@ export function AddItem() {
 					/>
 					{errorMsg && <p>{errorMsg}</p>}
 					<div className="select-next-purchase-buttons">
-						<fieldset>
+						<fieldset style={{ border: 'none' }}>
 							<legend>How soon will you buy this again?</legend>
 							<div className="radio-btn">
 								<label>
