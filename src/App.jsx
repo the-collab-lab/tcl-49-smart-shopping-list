@@ -23,30 +23,30 @@ export function App() {
 		}
 	}
 
-	// useEffect(() => {
-	// 	// if (!listToken)
+	useEffect(() => {
+		if (listToken) navigate('/list');
 
-	// 	// }
-	// 	/**
-	// 	 * streamListItems` takes a `listToken` so it can communicate
-	// 	 * with our database; then calls a callback function with
-	// 	 * a `snapshot` from the database.
-	// 	 *
-	// 	 * Refer to `api/firebase.js`.
-	// 	 */
-	// 	return streamListItems(listToken, (snapshot) => {
-	// 		/**
-	// 		 * Read the documents in the snapshot and do some work
-	// 		 * on them, so we can save them in our React state.
-	// 		 *
-	// 		 * Refer to `api/firebase.js`
-	// 		 */
-	// 		const nextData = getItemData(snapshot);
+		// }
+		/**
+		 * streamListItems` takes a `listToken` so it can communicate
+		 * with our database; then calls a callback function with
+		 * a `snapshot` from the database.
+		 *
+		 * Refer to `api/firebase.js`.
+		 */
+		// 	return streamListItems(listToken, (snapshot) => {
+		// 		/**
+		// 		 * Read the documents in the snapshot and do some work
+		// 		 * on them, so we can save them in our React state.
+		// 		 *
+		// 		 * Refer to `api/firebase.js`
+		// 		 */
+		// 		const nextData = getItemData(snapshot);
 
-	// 		/** Finally, we update our React state. */
-	// 		setData(nextData);
-	// 	});
-	// }, [listToken]);
+		// 		/** Finally, we update our React state. */
+		// 		setData(nextData);
+		// 	});
+	}, [listToken]);
 
 	return (
 		<Routes>
