@@ -3,54 +3,48 @@ import { Button, FormInput } from '../components';
 import { Link } from 'react-router-dom';
 import { addItem } from '../api';
 
-export function AddItem() {
-	const [displayName, setDisplayName] = useState('');
-	const [selectedOption, setSelectedOption] = useState('soon');
-	const [errorMsg, setErrorMsg] = useState('');
-	const [successMsg, setSuccessMsg] = useState('');
-	// const [isPending, setIsPending] = useState(false);
+export function AddItem({ listToken }) {
+	const [formFields, setFormFields] = useState({
+		itemName: '',
+		daysUntilNextPurchase: 7,
+	});
+	const [message, setMessage] = useState('');
 
-	const resetFormFields = () => {
-		setDisplayName('');
-		setSelectedOption('soon');
-	};
+	const { itemName, daysUntilNextPurchase } = formFields;
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 
-		if (!displayName) {
-			setErrorMsg('oops, item not saved to database. Enter an item');
-			return;
-		} else {
-			setSuccessMsg(`${displayName} successfully saved to the database`);
+		try {
+			await addItem(listToken, {
+				itemName,
+				daysUntilNextPurchase,
+			});
+			setMessage(`${itemName} successfully saved to the database`);
+		} catch (error) {
+			console.log(error);
+			setMessage('item not added to db');
 		}
-		resetFormFields();
-		setErrorMsg('');
-		console.log(addItem);
 	};
 
 	const handleChange = (e) => {
-		const { value } = e.target;
-		setDisplayName(value);
-		console.log(value);
-	};
-
-	const onValueChange = (e) => {
-		const { value } = e.target;
-		setSelectedOption(value);
-		console.log(value);
+		if (message) {
+			setMessage('');
+		}
+		setFormFields((prevState) => ({
+			...prevState,
+			[e.target.name]: e.target.value,
+		}));
 	};
 
 	return (
 		<div className="shopping-form-container">
-			{successMsg ? (
+			{message ? (
 				<div>
-					<h2>{successMsg}</h2>
-					<div>
-						<Link to="/list">
-							<button>View the list</button>
-						</Link>
-					</div>
+					<h2>{message}</h2>
+					<Link to="/list">
+						<button>View the list</button>
+					</Link>
 				</div>
 			) : (
 				<form onSubmit={handleSubmit}>
@@ -58,49 +52,55 @@ export function AddItem() {
 						label="Item name"
 						type="text"
 						onChange={handleChange}
-						name="displayName"
-						id="item"
-						value={displayName}
+						name="itemName"
+						id="itemName"
+						required
+						placeholder="item name"
+						value={itemName}
 					/>
-					{errorMsg && <p>{errorMsg}</p>}
 					<div className="select-next-purchase-buttons">
-						<fieldset style={{ border: 'none' }}>
+						<fieldset>
 							<legend>How soon will you buy this again?</legend>
 							<div className="radio-btn">
-								<label>
+								<label htmlFor="soon">
 									<input
 										type="radio"
-										value="soon"
-										checked={selectedOption === 'soon'}
-										onChange={onValueChange}
+										name="daysUntilNextPurchase"
+										id="soon"
+										value={7 || daysUntilNextPurchase}
+										onChange={handleChange}
+										defaultChecked
 									/>
 									Soon
 								</label>
 							</div>
 							<div className="radio-btn">
-								<label>
+								<label htmlFor="notSoon">
 									<input
 										type="radio"
-										value="kindOfSoon"
-										checked={selectedOption === 'kindOfSoon'}
-										onChange={onValueChange}
-									/>
-									Kind of Soon
-								</label>
-							</div>
-							<div className="radio-btn">
-								<label>
-									<input
-										type="radio"
-										value="notSoon"
-										checked={selectedOption === 'notSoon'}
-										onChange={onValueChange}
+										name="daysUntilNextPurchase"
+										id="notSoon"
+										value={14 || daysUntilNextPurchase}
+										onChange={handleChange}
 									/>
 									Not Soon
 								</label>
 							</div>
+							<div className="radio-btn">
+								<label htmlFor="kindOfSoon">
+									<input
+										type="radio"
+										name="daysUntilNextPurchase"
+										id="kindOfSoon"
+										value={30 || daysUntilNextPurchase}
+										onChange={handleChange}
+									/>
+									Kind of Soon
+								</label>
+							</div>
 						</fieldset>
 					</div>
+
 					<Button type="submit">Add Item</Button>
 				</form>
 			)}
