@@ -1,7 +1,7 @@
 export function FormInput({ label, ...otherProps }) {
 	return (
 		<div className="group">
-			<label htmlFor="item">{label}</label>
+			<label htmlFor="itemName">{label}</label>
 			<input {...otherProps} />
 		</div>
 	);
