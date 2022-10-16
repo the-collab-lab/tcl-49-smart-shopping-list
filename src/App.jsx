@@ -15,7 +15,6 @@ export function App() {
 	function handleClick() {
 		if (!listToken) {
 			const token = generateToken();
-			// console.log(token);
 			localStorage.setItem('tcl-shopping-list-token', token);
 			setListToken(token);
 			navigate('/list');
