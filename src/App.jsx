@@ -16,45 +16,43 @@ export function App() {
 	);
 
 	function handleClick() {
-		if (!listToken) {
-			const token = generateToken();
-			localStorage.setItem('tcl-shopping-list-token');
-			setListToken(token);
-			navigate('/list');
-		} else {
-			navigate('/list');
-		}
+		if (listToken) return;
+		const token = generateToken();
+		setListToken(token);
 	}
 
 	useEffect(() => {
 		if (listToken) navigate('/list');
 
-		//}
+		// }
 		/**
 		 * streamListItems` takes a `listToken` so it can communicate
 		 * with our database; then calls a callback function with
 		 * a `snapshot` from the database.
 		 *
-		 * Refer to `api/firebase.js`.
-		 */
-		return streamListItems(listToken, (snapshot) => {
-			// 		/**
-			// 		 * Read the documents in the snapshot and do some work
-			// 		 * on them, so we can save them in our React state.
-			// 		 *
-			// 		 * Refer to `api/firebase.js`
-			// 		 */
-			const nextData = getItemData(snapshot);
+		//  * Refer to `api/firebase.js`.
+		//  */
+		// 	return streamListItems(listToken, (snapshot) => {
+		// 		/**
+		// 		 * Read the documents in the snapshot and do some work
+		// 		 * on them, so we can save them in our React state.
+		// 		 *
+		// 		 * Refer to `api/firebase.js`
+		// 		 */
+		// 		const nextData = getItemData(snapshot);
 
-			// 		/** Finally, we update our React state. */
-			setData(nextData);
-		});
+		// 		/** Finally, we update our React state. */
+		// 		setData(nextData);
+		// 	});
 	}, [listToken]);
 
 	return (
 		<Routes>
 			<Route path="/" element={<Layout />}>
-				<Route index element={<Home handleClick={handleClick} />} />
+				<Route
+					index
+					element={<Home handleClick={handleClick} listToken={listToken} />}
+				/>
 				<Route path="/list" element={<List data={data} />} />
 				<Route path="/add-item" element={<AddItem />} />
 			</Route>
