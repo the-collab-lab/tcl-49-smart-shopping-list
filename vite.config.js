@@ -42,7 +42,6 @@ export default defineConfig({
 		target: 'esnext',
 		commonjsOptions: {
 			include: [],
-			esmExternals: true,
 		},
 		rollupOptions: {
 			output: {
