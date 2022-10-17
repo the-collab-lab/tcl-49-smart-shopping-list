@@ -18,7 +18,7 @@ export function App() {
 	function handleClick() {
 		if (!listToken) {
 			const token = generateToken();
-			localStorage.setItem('tcl-shopping-list-token', token);
+			localStorage.setItem('tcl-shopping-list-token');
 			setListToken(token);
 			navigate('/list');
 		} else {
