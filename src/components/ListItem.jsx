@@ -10,7 +10,7 @@ export function ListItem({ name, trigger, handleTrigger }) {
 
 				<div>
 					<button className="">Details</button>
-					<button className="" onClick={() => handleTrigger(true)}>
+					<button className="" onClick={handleTrigger}>
 						Delete
 					</button>
 				</div>
@@ -19,7 +19,7 @@ export function ListItem({ name, trigger, handleTrigger }) {
 				<div className="popup" style={{ marginBottom: '2em' }}>
 					<div className="popup-inner">
 						<p>Are you sure you want to delete</p>
-						<button onClick={() => handleTrigger(false)}>No</button>
+						<button onClick={handleTrigger}>No</button>
 						<button>Yes</button>
 					</div>
 				</div>

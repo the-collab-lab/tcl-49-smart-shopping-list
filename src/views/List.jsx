@@ -10,6 +10,10 @@ export function List({ data }) {
 		setSearchField(value.toLocaleLowerCase());
 	};
 
+	const handleTrigger = () => {
+		setButtonPopUp(!buttonPopUp);
+	};
+
 	return (
 		<>
 			<div>
@@ -33,7 +37,7 @@ export function List({ data }) {
 							key={id}
 							name={name}
 							trigger={buttonPopUp}
-							handleTrigger={setButtonPopUp}
+							handleTrigger={handleTrigger}
 						/>
 					))}
 			</ul>
