@@ -4,7 +4,7 @@ import React from 'react';
 export function ListItem({ name, trigger, handleTrigger }) {
 	return (
 		<React.Fragment>
-			<div>
+			<div style={{ display: 'flex' }}>
 				<input type="checkbox" />
 				<li className="ListItem">{name}</li>
 
@@ -16,7 +16,7 @@ export function ListItem({ name, trigger, handleTrigger }) {
 				</div>
 			</div>
 			{trigger ? (
-				<div className="popup">
+				<div className="popup" style={{ marginBottom: '2em' }}>
 					<div className="popup-inner">
 						<p>Are you sure you want to delete</p>
 						<button onClick={() => handleTrigger(false)}>No</button>
