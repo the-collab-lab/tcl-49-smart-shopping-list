@@ -40,7 +40,9 @@ export default defineConfig({
 	build: {
 		outDir: './build',
 		target: 'esnext',
-		commonjsOptions: { include: [] },
+		commonjsOptions: {
+			include: [],
+		},
 		rollupOptions: {
 			output: {
 				manualChunks: (id) => {
