@@ -7,18 +7,17 @@ export function List({ data }) {
 
 	const onSearchChange = (e) => {
 		const { value } = e.target;
-		console.log(value);
 		setSearchField(value.toLocaleLowerCase());
+		console.log(value);
 	};
 
 	return (
 		<>
-			{/* Add a form */}
 			<div>
 				<form>
 					<label htmlFor="filter-items">Filter items</label>
 					<input
-						type="text"
+						type="search"
 						name="filter-items"
 						id="filter-items"
 						onChange={onSearchChange}
