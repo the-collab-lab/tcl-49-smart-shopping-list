@@ -3,7 +3,7 @@ import { FormInput } from './../components/form-input/form-input.component';
 import { useState } from 'react';
 import { Button } from './../components/button/button.component';
 
-export function Home() {
+export function Home({ handleClick, listToken }) {
 	const [displayName, setDisplayName] = useState('');
 
 	const handleSubmit = async (e) => {
@@ -23,7 +23,7 @@ export function Home() {
 			</p>
 
 			{/* Create list button is missing  
-			<button type="button" onClick={handleClick}>Create list</button>*/}
+			{!listToken && <button onClick={handleClick}>Create list</button>}*/}
 
 			<form onSubmit={handleSubmit}>
 				<FormInput
