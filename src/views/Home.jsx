@@ -22,8 +22,7 @@ export function Home({ handleClick, listToken }) {
 				Hello from the home (<code>/</code>) page!
 			</p>
 
-			{/* Create list button is missing  
-			{!listToken && <button onClick={handleClick}>Create list</button>}*/}
+			{!listToken && <button onClick={handleClick}>Create list</button>}
 
 			<form onSubmit={handleSubmit}>
 				<FormInput
