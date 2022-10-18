@@ -1,6 +1,10 @@
+import { useState } from 'react';
 import { ListItem } from '../components';
 
 export function List({ data }) {
+	// const [searchField, setSearchField] = useState('');
+	const [buttonPopUp, setButtonPopUp] = useState(true);
+
 	const handleFilterItems = (event) => {
 		event.preventDefault();
 		console.log('This works!');
@@ -23,7 +27,7 @@ export function List({ data }) {
 
 			<ul>
 				{data.map(({ name, id }) => (
-					<ListItem key={id} name={name} />
+					<ListItem key={id} name={name} trigger={buttonPopUp} />
 				))}
 			</ul>
 		</>
