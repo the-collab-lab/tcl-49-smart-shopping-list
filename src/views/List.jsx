@@ -8,7 +8,6 @@ export function List({ data }) {
 	const onSearchChange = (e) => {
 		const { value } = e.target;
 		setSearchField(value.toLocaleLowerCase());
-		console.log(value);
 	};
 
 	return (
