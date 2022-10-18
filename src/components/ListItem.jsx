@@ -1,11 +1,7 @@
 import './ListItem.css';
 import React from 'react';
 
-export function ListItem({ name, trigger }) {
-	const handlePopUp = () => {
-		console.log('click');
-	};
-
+export function ListItem({ name, trigger, handleTrigger }) {
 	return (
 		<React.Fragment>
 			<div>
@@ -14,12 +10,22 @@ export function ListItem({ name, trigger }) {
 
 				<div>
 					<button className="">Details</button>
-					<button className="" onClick={handlePopUp}>
+					<button className="" onClick={() => handleTrigger(true)}>
 						Delete
 					</button>
 				</div>
 			</div>
-			{trigger ? 'show pop up' : ''}
+			{trigger ? (
+				<div className="popup">
+					<div className="popup-inner">
+						<p>Are you sure you want to delete</p>
+						<button onClick={() => handleTrigger(false)}>No</button>
+						<button>Yes</button>
+					</div>
+				</div>
+			) : (
+				''
+			)}
 		</React.Fragment>
 	);
 }

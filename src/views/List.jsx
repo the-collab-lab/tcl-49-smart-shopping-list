@@ -3,7 +3,7 @@ import { ListItem } from '../components';
 
 export function List({ data }) {
 	// const [searchField, setSearchField] = useState('');
-	const [buttonPopUp, setButtonPopUp] = useState(true);
+	const [buttonPopUp, setButtonPopUp] = useState(false);
 
 	const handleFilterItems = (event) => {
 		event.preventDefault();
@@ -27,7 +27,12 @@ export function List({ data }) {
 
 			<ul>
 				{data.map(({ name, id }) => (
-					<ListItem key={id} name={name} trigger={buttonPopUp} />
+					<ListItem
+						key={id}
+						name={name}
+						trigger={buttonPopUp}
+						handleTrigger={setButtonPopUp}
+					/>
 				))}
 			</ul>
 		</>
