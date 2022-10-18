@@ -21,6 +21,10 @@ export function Home() {
 			<p>
 				Hello from the home (<code>/</code>) page!
 			</p>
+
+			{/* Create list button is missing  
+			<button type="button" onClick={handleClick}>Create list</button>*/}
+
 			<form onSubmit={handleSubmit}>
 				<FormInput
 					label="Enter Token"
@@ -29,8 +33,9 @@ export function Home() {
 					name="displayName"
 					id="token"
 					value={displayName}
+					placeholder="Enter your 3 word token"
 				/>
-				<Button type="submit">Submit</Button>
+				<Button type="submit">Join an existing list</Button>
 			</form>
 		</div>
 	);
