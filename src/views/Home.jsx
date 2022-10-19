@@ -5,6 +5,7 @@ import { Button } from './../components/button/button.component';
 
 export function Home({ handleClick, listToken }) {
 	const [displayName, setDisplayName] = useState('');
+	const [errorMessage, setErrorMessage] = useState('');
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
@@ -30,6 +31,7 @@ export function Home({ handleClick, listToken }) {
 					value={displayName}
 					placeholder="Enter your 3 word token"
 				/>
+				<p>{errorMessage}</p>
 				<Button type="submit">Join an existing list</Button>
 			</form>
 		</div>
