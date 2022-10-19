@@ -18,10 +18,6 @@ export function Home({ handleClick, listToken }) {
 
 	return (
 		<div className="Home">
-			<p>
-				Hello from the home (<code>/</code>) page!
-			</p>
-
 			{!listToken && <button onClick={handleClick}>Create list</button>}
 
 			<form onSubmit={handleSubmit}>
