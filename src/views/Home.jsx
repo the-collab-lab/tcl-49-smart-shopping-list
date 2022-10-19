@@ -13,7 +13,7 @@ export function Home({ handleClick, listToken }) {
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 		const token = await checkToken(displayName);
-		if (!token.empty) {
+		if (token) {
 			setDisplayName(displayName);
 			navigate('/list');
 		} else {

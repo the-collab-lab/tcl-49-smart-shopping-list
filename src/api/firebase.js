@@ -1,4 +1,4 @@
-import { collection, onSnapshot, addDoc } from 'firebase/firestore';
+import { collection, onSnapshot, addDoc, getDocs } from 'firebase/firestore';
 import { db } from './config';
 import { getFutureDate } from '../utils';
 
