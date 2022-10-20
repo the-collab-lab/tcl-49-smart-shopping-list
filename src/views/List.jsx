@@ -3,16 +3,15 @@ import { ListItem } from '../components';
 
 export function List({ data }) {
 	const [searchField, setSearchField] = useState('');
-	const [buttonPopUp, setButtonPopUp] = useState(false);
 
 	const onSearchChange = (e) => {
 		const { value } = e.target;
 		setSearchField(value.toLocaleLowerCase());
 	};
 
-	const handleTrigger = () => {
-		setButtonPopUp(!buttonPopUp);
-	};
+	const filteredLists = data.filter(({ name }) =>
+		name.toLocaleLowerCase().includes(searchField),
+	);
 
 	return (
 		<>
@@ -30,16 +29,9 @@ export function List({ data }) {
 			</div>
 
 			<ul>
-				{data
-					.filter(({ name }) => name.toLocaleLowerCase().includes(searchField))
-					.map(({ name, id }) => (
-						<ListItem
-							key={id}
-							name={name}
-							trigger={buttonPopUp}
-							handleTrigger={handleTrigger}
-						/>
-					))}
+				{filteredLists.map(({ name, id }) => (
+					<ListItem key={id} name={name} />
+				))}
 			</ul>
 		</>
 	);
