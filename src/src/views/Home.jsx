@@ -5,14 +5,8 @@ import { Button } from './../components/button/button.component';
 import { checkToken } from '../api/firebase';
 import { useNavigate } from 'react-router-dom';
 
-export function Home({
-	displayName,
-	handleClick,
-	handleInputChange,
-	listToken,
-	setDisplayName,
-	setListToken,
-}) {
+export function Home({ handleClick, listToken, setListToken }) {
+	const [displayName, setDisplayName] = useState('');
 	const [errorMessage, setErrorMessage] = useState('');
 	const navigate = useNavigate();
 
@@ -31,6 +25,10 @@ export function Home({
 		setDisplayName('');
 	};
 
+	const handleChange = (evt) => {
+		setDisplayName(evt.target.value);
+	};
+
 	return (
 		<div className="Home">
 			{!listToken && <button onClick={handleClick}>Create list</button>}
@@ -39,7 +37,7 @@ export function Home({
 				<FormInput
 					label="Enter Token"
 					type="text"
-					onChange={handleInputChange}
+					onChange={handleChange}
 					name="displayName"
 					id="token"
 					value={displayName}
