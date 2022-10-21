@@ -15,8 +15,6 @@ export function App() {
 
 	useEffect(() => {
 		if (listToken) navigate('/list');
-
-		return;
 	}, []);
 
 	function handleClick() {
