@@ -1,8 +1,8 @@
-export function FormInput({ label, ...otherProps }) {
+export function FormInput({ label, id, ...otherProps }) {
 	return (
 		<div className="group">
-			<label htmlFor="itemName">{label}</label>
-			<input {...otherProps} />
+			<label htmlFor={id}>{label}</label>
+			<input id={id} {...otherProps} />
 		</div>
 	);
 }
