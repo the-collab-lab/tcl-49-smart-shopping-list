@@ -5,25 +5,30 @@ import { Button } from './../components/button/button.component';
 import { checkToken } from '../api/firebase';
 import { useNavigate } from 'react-router-dom';
 
-export function Home({ handleClick, listToken }) {
-	const [displayName, setDisplayName] = useState('');
+export function Home({
+	displayName,
+	handleClick,
+	handleInputChange,
+	listToken,
+	setDisplayName,
+	setListToken,
+}) {
 	const [errorMessage, setErrorMessage] = useState('');
 	const navigate = useNavigate();
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
-		const token = await checkToken(displayName);
-		if (token) {
-			setDisplayName(displayName);
+
+		const tokenExists = await checkToken(displayName);
+
+		if (tokenExists) {
+			setListToken(displayName, 'tcl-shopping-list-token');
 			navigate('/list');
 		} else {
 			setErrorMessage('Invalid token | The list does not exist');
 		}
-	};
 
-	const handleChange = (e) => {
-		const { value } = e.target;
-		setDisplayName(value);
+		setDisplayName('');
 	};
 
 	return (
@@ -34,7 +39,7 @@ export function Home({ handleClick, listToken }) {
 				<FormInput
 					label="Enter Token"
 					type="text"
-					onChange={handleChange}
+					onChange={handleInputChange}
 					name="displayName"
 					id="token"
 					value={displayName}
