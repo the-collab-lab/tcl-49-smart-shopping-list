@@ -78,4 +78,10 @@ export async function deleteItem() {
 	 */
 }
 
-export async function checkToken() {}
+export async function checkToken(tokenName = '') {
+	const collectionRef = collection(db, tokenName);
+
+	const snapshot = await getDocs(collectionRef);
+
+	return !!snapshot.docs.length;
+}
