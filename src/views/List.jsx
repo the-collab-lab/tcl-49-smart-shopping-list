@@ -1,34 +1,36 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { ListItem } from '../components';
-import { getItemData, streamListItems } from '../api';
 
-export function List({ listToken }) {
-	const [data, setData] = useState([]);
-	const [loading, setLoading] = useState(true);
+export function List({ data }) {
+	const [searchField, setSearchField] = useState('');
 
-	useEffect(() => {
-		streamListItems(listToken, (snapshot) => {
-			const nextData = getItemData(snapshot);
+	const onSearchChange = (e) => {
+		const { value } = e.target;
+		setSearchField(value.toLowerCase());
+		console.log(value);
+	};
 
-			setData(nextData);
-			setLoading(false);
-		});
-	}, [listToken]);
-
-	if (loading) {
-		return <p>Loading...</p>;
-	}
+	const filteredLists = data.filter(({ name }) =>
+		name.toLowerCase().includes(searchField),
+	);
 
 	return (
 		<>
-			<p>
-				Hello from the <code>/list</code> page!
-			</p>
-			<ul>
-				{data.map(({ name, id }) => (
-					<ListItem key={id} name={name} />
-				))}
-			</ul>
+			<form>
+				<label htmlFor="filter-items">Filter items</label>
+				<input
+					type="search"
+					name="filter-items"
+					id="filter-items"
+					onChange={onSearchChange}
+					value={searchField}
+				/>
+				<ul>
+					{filteredLists.map(({ name, id }) => (
+						<ListItem key={id} name={name} />
+					))}
+				</ul>
+			</form>
 		</>
 	);
 }

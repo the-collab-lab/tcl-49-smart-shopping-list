@@ -2,20 +2,18 @@
 import { useEffect, useState } from 'react';
 import { AddItem, Home, Layout, List } from './views';
 import { Routes, Route, useNavigate } from 'react-router-dom';
+import { getItemData, streamListItems } from './api';
 import { useStateWithStorage } from './utils';
 import { generateToken } from '@the-collab-lab/shopping-list-utils';
 
 export function App() {
 	const navigate = useNavigate();
-	const [displayName, setDisplayName] = useState('');
+	const [data, setData] = useState([]);
+
 	const [listToken, setListToken] = useStateWithStorage(
 		null,
 		'tcl-shopping-list-token',
 	);
-
-	useEffect(() => {
-		if (listToken) navigate('/list');
-	}, []);
 
 	function handleClick() {
 		if (listToken) return;
@@ -23,27 +21,26 @@ export function App() {
 		setListToken(token);
 	}
 
-	const handleInputChange = (evt) => {
-		setDisplayName(evt.target.value);
-	};
+	useEffect(() => {
+		if (listToken) {
+			navigate('/list');
+
+			return streamListItems(listToken, (snapshot) => {
+				const nextData = getItemData(snapshot);
+
+				setData(nextData);
+			});
+		}
+	}, [listToken]);
 
 	return (
 		<Routes>
 			<Route path="/" element={<Layout />}>
 				<Route
 					index
-					element={
-						<Home
-							displayName={displayName}
-							handleClick={handleClick}
-							handleInputChange={handleInputChange}
-							listToken={listToken}
-							setDisplayName={setDisplayName}
-							setListToken={setListToken}
-						/>
-					}
+					element={<Home handleClick={handleClick} listToken={listToken} />}
 				/>
-				<Route path="/list" element={<List listToken={listToken} />} />
+				<Route path="/list" element={<List data={data} />} />
 				<Route path="/add-item" element={<AddItem listToken={listToken} />} />
 			</Route>
 		</Routes>
