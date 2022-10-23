@@ -6,12 +6,12 @@ export function List({ data }) {
 
 	const onSearchChange = (e) => {
 		const { value } = e.target;
-		setSearchField(value.toLocaleLowerCase());
+		setSearchField(value.toLowerCase());
 		console.log(value);
 	};
 
 	const filteredLists = data.filter(({ name }) =>
-		name.toLocaleLowerCase().includes(searchField),
+		name.toLowerCase().includes(searchField),
 	);
 
 	return (
