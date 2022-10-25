@@ -7,7 +7,6 @@ export function List({ data }) {
 	const onSearchChange = (e) => {
 		const { value } = e.target;
 		setSearchField(value.toLowerCase());
-		console.log(value);
 	};
 
 	const filteredLists = data.filter(({ name }) =>

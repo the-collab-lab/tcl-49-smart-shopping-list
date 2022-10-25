@@ -22,7 +22,7 @@ export function AddItem({ listToken }) {
 			});
 			setMessage(`${itemName} successfully saved to the database`);
 		} catch (error) {
-			console.log(error);
+			// console.log(error);
 			setMessage('item not added to db');
 		}
 	};

@@ -9,6 +9,7 @@ import { generateToken } from '@the-collab-lab/shopping-list-utils';
 export function App() {
 	const navigate = useNavigate();
 	const [data, setData] = useState([]);
+	const [displayName, setDisplayName] = useState('');
 
 	const [listToken, setListToken] = useStateWithStorage(
 		null,
@@ -20,6 +21,10 @@ export function App() {
 		const token = generateToken();
 		setListToken(token);
 	}
+
+	const handleInputChange = (evt) => {
+		setDisplayName(evt.target.value);
+	};
 
 	useEffect(() => {
 		if (listToken) {
@@ -38,9 +43,21 @@ export function App() {
 			<Route path="/" element={<Layout />}>
 				<Route
 					index
-					element={<Home handleClick={handleClick} listToken={listToken} />}
+					element={
+						<Home
+							handleClick={handleClick}
+							listToken={listToken}
+							displayName={displayName}
+							handleInputChange={handleInputChange}
+							setDisplayName={setDisplayName}
+							setListToken={setListToken}
+						/>
+					}
 				/>
-				<Route path="/list" element={<List data={data} />} />
+				<Route
+					path="/list"
+					element={<List data={data} listToken={listToken} />}
+				/>
 				<Route path="/add-item" element={<AddItem listToken={listToken} />} />
 			</Route>
 		</Routes>
