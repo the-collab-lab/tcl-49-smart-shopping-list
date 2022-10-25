@@ -1,5 +1,8 @@
 import { useState } from 'react';
 import { ListItem } from '../components';
+import { Link } from 'react-router-dom';
+import '../index.css';
+import ListPrompt from '../components/ListPrompt';
 
 export function List({ data }) {
 	const [searchField, setSearchField] = useState('');
@@ -28,6 +31,7 @@ export function List({ data }) {
 					{filteredLists.map(({ name, id }) => (
 						<ListItem key={id} name={name} />
 					))}
+					{!filteredLists[0] && <ListPrompt />}
 				</ul>
 			</form>
 		</>

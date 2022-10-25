@@ -92,3 +92,7 @@ code {
 ul {
 	padding: 0;
 }
+
+.add-prompt {
+	color: var(--color-white);
+}
