@@ -31,9 +31,11 @@ export function List({ data }) {
 					{filteredLists.map(({ name, id }) => (
 						<ListItem key={id} name={name} />
 					))}
-					{!filteredLists[0] && <ListPrompt />}
 				</ul>
 			</form>
+
+			{/* Show a prompt when list is empty */}
+			{!filteredLists[0] && <ListPrompt />}
 		</>
 	);
 }
