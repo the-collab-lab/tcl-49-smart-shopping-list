@@ -8,6 +8,7 @@ export function AddItem({ listToken }) {
 		itemName: '',
 		daysUntilNextPurchase: 7,
 	});
+	console.log(listToken);
 	const [message, setMessage] = useState('');
 
 	const { itemName, daysUntilNextPurchase } = formFields;
