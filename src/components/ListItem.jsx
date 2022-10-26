@@ -1,5 +1,5 @@
 import './ListItem.css';
-import { updateItem } from '../api';
+// import { updateItem } from '../api';
 
 export function ListItem({ name }) {
 	const handleCheckbox = async () => {
