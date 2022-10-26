@@ -95,6 +95,10 @@ ul {
 
 .add-prompt {
 	color: var(--color-white);
-	background-color: red;
+	background-color: #efefef;
 	border-radius: 5px;
+	border: 1px solid black;
+	padding: 4px 6px;
+	text-decoration: none;
+	color: black;
 }
