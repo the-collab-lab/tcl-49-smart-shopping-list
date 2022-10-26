@@ -18,24 +18,28 @@ export function List({ data }) {
 
 	return (
 		<>
-			<form>
-				<label htmlFor="filter-items">Filter items</label>
-				<input
-					type="search"
-					name="filter-items"
-					id="filter-items"
-					onChange={onSearchChange}
-					value={searchField}
-				/>
-				<ul>
-					{filteredLists.map(({ name, id }) => (
-						<ListItem key={id} name={name} />
-					))}
-				</ul>
-			</form>
+			{filteredLists[0] ? (
+				<div>
+					<form>
+						<label htmlFor="filter-items">Filter items</label>
+						<input
+							type="search"
+							name="filter-items"
+							id="filter-items"
+							onChange={onSearchChange}
+							value={searchField}
+						/>
+					</form>
 
-			{/* Show a prompt when list is empty */}
-			{!filteredLists[0] && <ListPrompt />}
+					<ul>
+						{filteredLists.map(({ name, id }) => (
+							<ListItem key={id} name={name} />
+						))}
+					</ul>
+				</div>
+			) : (
+				<ListPrompt />
+			)}
 		</>
 	);
 }
