@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { ListItem } from '../components';
-import { Link } from 'react-router-dom';
 import '../index.css';
 import ListPrompt from '../components/ListPrompt';
 
