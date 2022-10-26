@@ -2,24 +2,27 @@ import './ListItem.css';
 // import { updateItem } from '../api';
 
 export function ListItem({ name }) {
-	// return <li className="ListItem">{name}</li>;
-
-	const handleCheckbox = () => {
-		console.log('teri');
+	const handleCheckbox = async () => {
+		// try {
+		// 	await updateItem(listToken, {
+		// 		if(isChecked) {
+		// 			console.log('working');
+		// 		},
+		// 	});
+		// } catch (error) {
+		// 	console.log(error);
+		// }
 	};
 
 	return (
 		<li className="ListItem">
-			<form>
-				<input
-					type="checkbox"
-					name="purchased"
-					id="purchased"
-					// defaultChecked={isChecked}
-					onChange={handleCheckbox}
-				/>
-				<label htmlFor="purchased">{name}</label>
-			</form>
+			<input
+				type="checkbox"
+				name="purchased"
+				id="purchased"
+				onChange={handleCheckbox}
+			/>
+			<label htmlFor="purchased">{name}</label>
 		</li>
 	);
 }

@@ -2,13 +2,12 @@ import { useState } from 'react';
 import { ListItem } from '../components';
 // import { updateItem } from '../api';
 
-export function List({ data }) {
+export function List({ data, listToken }) {
 	const [searchField, setSearchField] = useState('');
 
 	const onSearchChange = (e) => {
 		const { value } = e.target;
 		setSearchField(value.toLowerCase());
-		console.log(value);
 	};
 
 	const filteredLists = data.filter(({ name }) =>
@@ -28,7 +27,7 @@ export function List({ data }) {
 				/>
 				<ul>
 					{filteredLists.map(({ name, id }) => (
-						<ListItem key={id} name={name} />
+						<ListItem key={id} name={name} listToken={listToken} />
 					))}
 				</ul>
 			</form>
