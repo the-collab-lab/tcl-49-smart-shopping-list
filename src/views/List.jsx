@@ -24,16 +24,23 @@ export function List({ data, listToken }) {
 					onChange={onSearchChange}
 					value={searchField}
 				/>
-				<ul>
-					{filteredLists.map(({ name, ...items }) => (
-						<ListItem
-							key={items.id}
-							name={name}
-							items={items}
-							listToken={listToken}
-						/>
-					))}
-				</ul>
+
+				{filteredLists && filteredLists.length > 0 ? (
+					<ul>
+						{filteredLists.map(({ name, ...items }) => (
+							<ListItem
+								key={items.id}
+								name={name}
+								items={items}
+								listToken={listToken}
+							/>
+						))}
+					</ul>
+				) : (
+					<div>
+						<p>Loading...</p>
+					</div>
+				)}
 			</form>
 		</>
 	);
