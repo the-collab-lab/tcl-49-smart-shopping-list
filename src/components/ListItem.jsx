@@ -8,12 +8,18 @@ export function ListItem({ name, item, listToken }) {
 	const handleCheckbox = () => {
 		if (isChecked) {
 			const itemData = {
-				isChecked: true,
+				isChecked: false,
 			};
 			console.log(itemData);
 			updateItem(listToken, id, itemData);
 		} else {
 			console.log('delibrate on this matter');
+			const updateTotalPurchases = totalPurchases + 1;
+			const itemData = {
+				isChecked: true,
+				totalPurchases: updateTotalPurchases,
+			};
+			updateItem(listToken, id, itemData);
 		}
 	};
 
