@@ -2,20 +2,19 @@ import './ListItem.css';
 import { updateItem } from '../api';
 
 const currentDate = new Date();
-const currentTime = currentDate.getTime() / 1000; //gets date in milliseconds since Jan 1, 1970 and converts to seconds
+const currentTimeToSec = currentDate.getTime() / 1000; //gets date in milliseconds since Jan 1, 1970 and converts to seconds
 
 export function ListItem({ name, items, listToken }) {
 	const { isChecked, id, totalPurchases, dateLastPurchased } = items;
 	const updateTotalPurchases = totalPurchases + 1;
 
-	// console.log({ dateLastPurchased });
-
 	if (isChecked) {
 		const lastPurchaseToMilSec = dateLastPurchased.seconds * 1000;
 
-		const timeElapsed = currentTime - lastPurchaseToMilSec;
+		const timeElapsed = currentTimeToSec - lastPurchaseToMilSec;
+		console.log({ dateLastPurchased, currentTimeToSec });
 
-		const timeToUncheck = 120; //minutes to uncheck automatically: 24 hours x 60 min = 1440
+		const timeToUncheck = 120; //seconds to uncheck automatically: 24 hours x 60 min x 60 sec = 86400
 		if (timeElapsed >= timeToUncheck) {
 			const itemData = {
 				isChecked: false,
