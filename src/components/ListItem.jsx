@@ -3,7 +3,7 @@ import { updateItem } from '../api';
 
 export function ListItem({ name, items, listToken }) {
 	const { isChecked, id, totalPurchases, dateLastPurchased } = items;
-	const newDate = new Date();
+	const currentDate = new Date();
 	const updateTotalPurchases = totalPurchases + 1;
 
 	console.log({ dateLastPurchased });
@@ -18,7 +18,7 @@ export function ListItem({ name, items, listToken }) {
 			const itemData = {
 				isChecked: true,
 				totalPurchases: updateTotalPurchases,
-				dateLastPurchased: newDate,
+				dateLastPurchased: currentDate,
 			};
 
 			updateItem(listToken, id, itemData);
