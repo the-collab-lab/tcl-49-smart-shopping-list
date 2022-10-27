@@ -25,8 +25,13 @@ export function List({ data, listToken }) {
 					value={searchField}
 				/>
 				<ul>
-					{filteredLists.map(({ name, id }) => (
-						<ListItem key={id} name={name} listToken={listToken} />
+					{filteredLists.map(({ name, ...others }) => (
+						<ListItem
+							key={others.id}
+							name={name}
+							item={others}
+							listToken={listToken}
+						/>
 					))}
 				</ul>
 			</form>
