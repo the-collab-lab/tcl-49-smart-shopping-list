@@ -21,6 +21,10 @@ export function App() {
 		const token = generateToken();
 		setListToken(token);
 	}
+	
+	const handleInputChange = (evt) => {
+		setDisplayName(evt.target.value);
+	};
 
 	const handleInputChange = (evt) => {
 		setDisplayName(evt.target.value);
@@ -54,10 +58,7 @@ export function App() {
 						/>
 					}
 				/>
-				<Route
-					path="/list"
-					element={<List data={data} listToken={listToken} />}
-				/>
+				<Route path="/list" element={<List data={data} listToken={listToken} />} />
 				<Route path="/add-item" element={<AddItem listToken={listToken} />} />
 			</Route>
 		</Routes>
