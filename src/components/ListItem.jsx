@@ -6,18 +6,17 @@ const currentTime = currentDate.getTime() / 1000; //gets date in milliseconds si
 
 export function ListItem({ name, items, listToken }) {
 	const { isChecked, id, totalPurchases, dateLastPurchased } = items;
-	// const currentDate = new Date();
 	const updateTotalPurchases = totalPurchases + 1;
 
 	// console.log({ dateLastPurchased });
 
 	if (isChecked) {
-		const lastPurchaseToSec = dateLastPurchased / 1000;
+		const lastPurchaseToMilSec = dateLastPurchased.seconds * 1000;
 
-		const differenceInMinutes = (currentTime - lastPurchaseToSec) / 60;
+		const timeElapsed = currentTime - lastPurchaseToMilSec;
 
 		const timeToUncheck = 120; //minutes to uncheck automatically: 24 hours x 60 min = 1440
-		if (differenceInMinutes >= timeToUncheck) {
+		if (timeElapsed >= timeToUncheck) {
 			const itemData = {
 				isChecked: false,
 			};
