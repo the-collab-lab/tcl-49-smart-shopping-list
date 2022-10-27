@@ -1,10 +1,12 @@
 import './ListItem.css';
 import { updateItem } from '../api';
 
+let newDate = new Date();
+
 export function ListItem({ name, item, listToken }) {
 	const { isChecked, id, totalPurchases, dateLastPurchased } = item;
 	console.log({ isChecked, id, totalPurchases, dateLastPurchased });
-
+	// console.log(new);
 	const handleCheckbox = () => {
 		if (isChecked) {
 			const itemData = {
@@ -18,7 +20,9 @@ export function ListItem({ name, item, listToken }) {
 			const itemData = {
 				isChecked: true,
 				totalPurchases: updateTotalPurchases,
+				dateLastPurchased: newDate,
 			};
+
 			updateItem(listToken, id, itemData);
 		}
 	};
