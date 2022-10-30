@@ -10,17 +10,13 @@ export function List({ data }) {
 		setSearchField(value.toLowerCase());
 	};
 
-	const isDataEmpty = ((data) => data.some((d) => !d.name))(data);
-
-	const filteredList = isDataEmpty
-		? []
-		: data.filter(({ name }) => name.toLowerCase().includes(searchField));
+	const filteredListItems = data.filter(({ name }) =>
+		name.toLowerCase().includes(searchField),
+	);
 
 	return (
 		<>
-			{isDataEmpty ? (
-				<ListPrompt />
-			) : (
+			{data.length ? (
 				<div>
 					<form>
 						<label htmlFor="filter-items">Filter items</label>
@@ -34,11 +30,13 @@ export function List({ data }) {
 					</form>
 
 					<ul>
-						{filteredList.map(({ name, id }) => (
+						{filteredListItems.map(({ name, id }) => (
 							<ListItem key={id} name={name} />
 						))}
 					</ul>
 				</div>
+			) : (
+				<ListPrompt />
 			)}
 		</>
 	);
