@@ -12,8 +12,8 @@ export function ListItem({ name, items, listToken }) {
 		const lastPurchaseToSec = dateLastPurchased.seconds;
 		const timeElapsed = currentTimeToSec - lastPurchaseToSec;
 
-		const timeToUncheck = 86400;
-		if (timeElapsed >= timeToUncheck) {
+		const one_day_in_seconds = 86400;
+		if (timeElapsed >= one_day_in_seconds) {
 			const itemData = {
 				isChecked: false,
 			};
