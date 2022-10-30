@@ -28,10 +28,10 @@ export function ListItem({ name, items, listToken }) {
 			};
 			updateItem(listToken, id, itemData);
 		} else {
-			const updateTotalPurchases = totalPurchases + 1;
+			const updatedTotalPurchases = totalPurchases + 1;
 			const itemData = {
 				isChecked: true,
-				totalPurchases: updateTotalPurchases,
+				totalPurchases: updatedTotalPurchases,
 				dateLastPurchased: currentTime,
 			};
 			updateItem(listToken, id, itemData);
