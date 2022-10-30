@@ -9,8 +9,8 @@ export function ListItem({ name, items, listToken }) {
 	if (isChecked) {
 		const currentDate = new Date();
 		const currentTimeToSec = currentDate.getTime() / 1000;
-		const lastPurchaseToMilSec = dateLastPurchased.seconds * 1000;
-		const timeElapsed = currentTimeToSec - lastPurchaseToMilSec;
+		const lastPurchaseToSec = dateLastPurchased.seconds;
+		const timeElapsed = currentTimeToSec - lastPurchaseToSec;
 
 		const timeToUncheck = 86400;
 		if (timeElapsed >= timeToUncheck) {
