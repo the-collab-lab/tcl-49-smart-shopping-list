@@ -7,6 +7,7 @@ export function List({ data, listToken }) {
 	const onSearchChange = (e) => {
 		const { value } = e.target;
 		setSearchField(value.toLowerCase());
+		console.log(value);
 	};
 
 	const filteredLists = data.filter(({ name }) =>
@@ -24,23 +25,16 @@ export function List({ data, listToken }) {
 					onChange={onSearchChange}
 					value={searchField}
 				/>
-
-				{filteredLists && filteredLists.length > 0 ? (
-					<ul>
-						{filteredLists.map(({ name, ...items }) => (
-							<ListItem
-								key={items.id}
-								name={name}
-								items={items}
-								listToken={listToken}
-							/>
-						))}
-					</ul>
-				) : (
-					<div>
-						<p>Loading...</p>
-					</div>
-				)}
+				<ul>
+					{filteredLists.map(({ name, ...items }) => (
+						<ListItem
+							key={items.id}
+							name={name}
+							items={items}
+							listToken={listToken}
+						/>
+					))}
+				</ul>
 			</form>
 		</>
 	);
