@@ -6,9 +6,8 @@ const currentTime = new Date();
 export function ListItem({ name, items, listToken }) {
 	const { isChecked, id, totalPurchases, dateLastPurchased } = items;
 
-	const currentDate = new Date();
-
 	if (isChecked) {
+		const currentDate = new Date();
 		const currentTimeToSec = currentDate.getTime() / 1000;
 		const lastPurchaseToMilSec = dateLastPurchased.seconds * 1000;
 		const timeElapsed = currentTimeToSec - lastPurchaseToMilSec;
