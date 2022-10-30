@@ -6,15 +6,13 @@ const currentTime = new Date();
 export function ListItem({ name, items, listToken }) {
 	const { isChecked, id, totalPurchases, dateLastPurchased } = items;
 
-	const currentDate = new Date();
-
 	if (isChecked) {
-		const currentTimeToSec = currentDate.getTime() / 1000;
-		const lastPurchaseToMilSec = dateLastPurchased.seconds * 1000;
-		const timeElapsed = currentTimeToSec - lastPurchaseToMilSec;
+		const currentTimeToSec = currentTime.getTime() / 1000;
+		const lastPurchaseToSec = dateLastPurchased.seconds;
+		const timeElapsed = currentTimeToSec - lastPurchaseToSec;
 
-		const timeToUncheck = 86400;
-		if (timeElapsed >= timeToUncheck) {
+		const ONE_DAY_IN_SECONDS = 86400;
+		if (timeElapsed >= ONE_DAY_IN_SECONDS) {
 			const itemData = {
 				isChecked: false,
 			};
@@ -29,10 +27,10 @@ export function ListItem({ name, items, listToken }) {
 			};
 			updateItem(listToken, id, itemData);
 		} else {
-			const updateTotalPurchases = totalPurchases + 1;
+			const updatedTotalPurchases = totalPurchases + 1;
 			const itemData = {
 				isChecked: true,
-				totalPurchases: updateTotalPurchases,
+				totalPurchases: updatedTotalPurchases,
 				dateLastPurchased: currentTime,
 			};
 			updateItem(listToken, id, itemData);
