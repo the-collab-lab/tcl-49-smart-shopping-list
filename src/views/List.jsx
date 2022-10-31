@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { ListItem } from '../components';
 import ListPrompt from '../components/ListPrompt';
 
-export function List({ data }) {
+export function List({ data, listToken }) {
 	const [searchField, setSearchField] = useState('');
 
 	const onSearchChange = (e) => {
@@ -30,8 +30,13 @@ export function List({ data }) {
 					</form>
 
 					<ul>
-						{filteredListItems.map(({ name, id }) => (
-							<ListItem key={id} name={name} />
+						{filteredListItems.map(({ name, ...items }) => (
+							<ListItem
+								key={items.id}
+								name={name}
+								items={items}
+								listToken={listToken}
+							/>
 						))}
 					</ul>
 				</div>
