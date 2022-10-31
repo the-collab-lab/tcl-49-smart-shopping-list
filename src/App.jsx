@@ -21,7 +21,7 @@ export function App() {
 		const token = generateToken();
 		setListToken(token);
 	}
-	
+
 	const handleInputChange = (evt) => {
 		setDisplayName(evt.target.value);
 	};
@@ -43,16 +43,21 @@ export function App() {
 			<Route path="/" element={<Layout />}>
 				<Route
 					index
-					element={<Home 
-					handleClick={handleClick} 
-					listToken={listToken} 
-					displayName={displayName}
-					    handleInputChange={handleInputChange}
-					    setDisplayName={setDisplayName}
-					    setListToken={setListToken}
-				/>}
+					element={
+						<Home
+							handleClick={handleClick}
+							listToken={listToken}
+							displayName={displayName}
+							handleInputChange={handleInputChange}
+							setDisplayName={setDisplayName}
+							setListToken={setListToken}
+						/>
+					}
 				/>
-				<Route path="/list" element={<List data={data} listToken={listToken} />} />
+				<Route
+					path="/list"
+					element={<List data={data} listToken={listToken} />}
+				/>
 				<Route path="/add-item" element={<AddItem listToken={listToken} />} />
 			</Route>
 		</Routes>
