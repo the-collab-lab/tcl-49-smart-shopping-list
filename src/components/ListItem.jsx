@@ -1,10 +1,9 @@
 import './ListItem.css';
 import { updateItem } from '../api';
 
-const currentTime = new Date();
-
 export function ListItem({ name, items, listToken }) {
 	const { isChecked, id, totalPurchases, dateLastPurchased } = items;
+	const currentTime = new Date();
 
 	console.log(items);
 
