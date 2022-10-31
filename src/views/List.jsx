@@ -14,8 +14,6 @@ export function List({ data, listToken }) {
 		name.toLowerCase().includes(searchField),
 	);
 
-	console.log(data.length);
-
 	return (
 		<>
 			{data.length ? (
