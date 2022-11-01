@@ -9,9 +9,9 @@ export function AddItem({ listToken }) {
 		daysUntilNextPurchase: 7,
 	});
 
-	const [empty, checkEmpty] = useState('');
-
-	const [message, setMessage] = useState('');
+	const [empty, setEmpty] = useState(''); // Message when empty submission: "The item was not added"
+	const [duplicate, setDuplicate] = useState(''); // Message when duplicated item: "The item is already on your list. Please, add a different item!"
+	const [message, setMessage] = useState(''); // Message when successful submission: "Item successfully saved to the database"
 
 	const { itemName, daysUntilNextPurchase } = formFields;
 
@@ -109,11 +109,6 @@ export function AddItem({ listToken }) {
 					</div>
 
 					<Button type="submit">Add Item</Button>
-					<div className="error-message">
-						<p>The item was not added</p>
-						<p>The item is already on your list. Add a different item!</p>
-						<p>The item has already been added!</p>
-					</div>
 				</form>
 			)}
 		</div>
