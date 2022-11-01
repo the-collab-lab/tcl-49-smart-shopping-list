@@ -9,12 +9,19 @@ export function AddItem({ listToken }) {
 		daysUntilNextPurchase: 7,
 	});
 
+	const [empty, checkEmpty] = useState('');
+
 	const [message, setMessage] = useState('');
 
 	const { itemName, daysUntilNextPurchase } = formFields;
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
+		if (message.trim().length !== 0) {
+			console.log('input value is NOT empty');
+		} else {
+			console.log('input value is empty');
+		}
 
 		try {
 			await addItem(listToken, {
@@ -102,6 +109,11 @@ export function AddItem({ listToken }) {
 					</div>
 
 					<Button type="submit">Add Item</Button>
+					<div className="error-message">
+						<p>The item was not added</p>
+						<p>The item is already on your list. Add a different item!</p>
+						<p>The item has already been added!</p>
+					</div>
 				</form>
 			)}
 		</div>
