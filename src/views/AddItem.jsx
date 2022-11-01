@@ -17,11 +17,11 @@ export function AddItem({ listToken }) {
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
-		if (message.trim().length !== 0) {
-			console.log('input value is NOT empty');
-		} else {
-			console.log('input value is empty');
-		}
+		// 	if (message.trim().length !== 0) {
+		// 		console.log('input value is NOT empty');
+		// 	} else {
+		// 		console.log('input value is empty');
+		// 	}
 
 		try {
 			await addItem(listToken, {
