@@ -13,14 +13,14 @@ export function AddItem({ listToken, itemList }) {
 	//const [duplicate, setDuplicate] = useState(''); // Duplicated item: "${itemName} is already on your list. Please, add a different item!"
 	const [message, setMessage] = useState(''); // Successful submission: "${itemName} successfully saved to your shopping list"
 
-	const itemNamesNoChar = itemList.map((item) =>
-		item.name.toLowerCase().replace(/[^a-zA-Z0-9 ]/g, ''),
-	); // Item Names without special characters
-
 	const { itemName, daysUntilNextPurchase } = formFields;
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
+
+		const itemNamesNoChar = itemList.map((item) =>
+			item.name.toLowerCase().replace(/[^a-zA-Z0-9 ]/g, ''),
+		); // Item Names without special characters
 
 		try {
 			if (itemName === '') {
