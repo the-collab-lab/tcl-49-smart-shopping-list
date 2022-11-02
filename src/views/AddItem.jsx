@@ -50,6 +50,20 @@ export function AddItem({ listToken, itemList }) {
 		}
 	};
 
+	// const handleSubmit = async (e) => {
+	// 	e.preventDefault();
+
+	// 	try {
+	// 		await addItem(listToken, {
+	// 			itemName,
+	// 			daysUntilNextPurchase,
+	// 		});
+	// 		setMessage(`${itemName} successfully saved to the database`);
+	// 	} catch (error) {
+	// 		setMessage('item not added to db');
+	// 	}
+	// };
+
 	const handleChange = (e) => {
 		if (message) {
 			setMessage('');
