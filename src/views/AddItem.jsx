@@ -31,7 +31,7 @@ export function AddItem({ listToken, itemList }) {
 				)
 			) {
 				setMessage(
-					`${itemName} is already on your list. Please, add a different item.`,
+					`${itemName} is already on your list. Please add a different item.`,
 				);
 			} else {
 				addItem(listToken, {
