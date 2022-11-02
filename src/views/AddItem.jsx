@@ -24,7 +24,7 @@ export function AddItem({ listToken, itemList }) {
 
 		try {
 			if (itemName[0]) {
-				setMessage("Please, enter your item's name");
+				setMessage("Please enter your item's name");
 			} else if (
 				itemNamesNoChar.includes(
 					itemName.toLowerCase().replace(/[^a-zA-Z0-9 ]/g, ''),
@@ -33,7 +33,7 @@ export function AddItem({ listToken, itemList }) {
 			
 			{
 				setMessage(
-					`${itemName} is already on your list. Please, add a different item.`,
+					`${itemName} is already on your list. Please add a different item.`,
 				);
 			} else {
 				addItem(listToken, {
