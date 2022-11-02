@@ -3,15 +3,19 @@ import { Button, FormInput } from '../components';
 import { Link } from 'react-router-dom';
 import { addItem } from '../api';
 
-export function AddItem({ listToken }) {
+export function AddItem({ listToken, itemList }) {
 	const [formFields, setFormFields] = useState({
 		itemName: '',
 		daysUntilNextPurchase: 7,
 	});
 
-	const [empty, setEmpty] = useState(''); // Message when empty submission: "The item was not added"
-	const [duplicate, setDuplicate] = useState(''); // Message when duplicated item: "The item is already on your list. Please, add a different item!"
-	const [message, setMessage] = useState(''); // Message when successful submission: "Item successfully saved to the database"
+	//const [empty, setEmpty] = useState(''); // Empty submission: "Please, enter your item's name"
+	//const [duplicate, setDuplicate] = useState(''); // Duplicated item: "${itemName} is already on your list. Please, add a different item!"
+	const [message, setMessage] = useState(''); // Successful submission: "${itemName} successfully saved to your shopping list"
+
+	const itemNamesNoChar = itemList.map((item) =>
+		item.name.toLowerCase().replace(/[^a-zA-Z0-9 ]/g, ''),
+	); // Item Names without special characters
 
 	const { itemName, daysUntilNextPurchase } = formFields;
 
@@ -24,13 +28,25 @@ export function AddItem({ listToken }) {
 		// 	}
 
 		try {
-			await addItem(listToken, {
-				itemName,
-				daysUntilNextPurchase,
-			});
-			setMessage(`${itemName} successfully saved to the database`);
+			if (itemName === '') {
+				setMessage("Please, enter your item's name");
+			} else if (
+				itemNamesNoChar.includes(
+					itemName.toLowerCase().replace(/[^a-zA-Z0-9 ]/g, ''),
+				)
+			) {
+				setMessage(
+					`${itemName} is already on your list. Please, add a different item.`,
+				);
+			} else {
+				addItem(listToken, {
+					itemName,
+					daysUntilNextPurchase,
+				});
+				setMessage(`${itemName} successfully saved to your shopping list!`);
+			}
 		} catch (error) {
-			setMessage('item not added to db');
+			setMessage('item not added to the db');
 		}
 	};
 
