@@ -23,13 +23,15 @@ export function AddItem({ listToken, itemList }) {
 		); // Item Names without special characters
 
 		try {
-			if (itemName === '') {
+			if (itemName[0]) {
 				setMessage("Please, enter your item's name");
 			} else if (
 				itemNamesNoChar.includes(
 					itemName.toLowerCase().replace(/[^a-zA-Z0-9 ]/g, ''),
 				)
-			) {
+			) 
+			
+			{
 				setMessage(
 					`${itemName} is already on your list. Please, add a different item.`,
 				);
