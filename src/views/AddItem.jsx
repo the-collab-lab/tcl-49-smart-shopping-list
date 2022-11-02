@@ -23,8 +23,8 @@ export function AddItem({ listToken, itemList }) {
 		); // Item Names without special characters
 
 		try {
-			if (itemName[0]) {
-				setMessage("Please enter your item's name");
+			if (itemName.replace(/\s/g, '').length === 0) {
+				setMessage("Error: Please enter your item's name.");
 			} else if (
 				itemNamesNoChar.includes(
 					itemName.toLowerCase().replace(/[^a-zA-Z0-9 ]/g, ''),
@@ -40,10 +40,10 @@ export function AddItem({ listToken, itemList }) {
 					itemName,
 					daysUntilNextPurchase,
 				});
-				setMessage(`${itemName} successfully saved to your shopping list!`);
+				setMessage(`${itemName} was successfully saved to your shopping list!`);
 			}
 		} catch (error) {
-			setMessage('item not added to the db');
+			setMessage('Error: This item not added to the database.');
 		}
 	};
 
