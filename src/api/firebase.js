@@ -7,7 +7,7 @@ import {
 	updateDoc,
 } from 'firebase/firestore';
 import { db } from './config';
-import { getFutureDate } from '../utils';
+import { getFutureDate, getDaysBetweenDates } from '../utils';
 
 /**
  * Subscribe to changes on a specific list in the Firestore database (listId), and run a callback (handleSuccess) every time a change happens.
