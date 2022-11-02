@@ -9,9 +9,8 @@ export function AddItem({ listToken, itemList }) {
 		daysUntilNextPurchase: 7,
 	});
 
-	//const [empty, setEmpty] = useState(''); // Empty submission: "Please, enter your item's name"
-	//const [duplicate, setDuplicate] = useState(''); // Duplicated item: "${itemName} is already on your list. Please, add a different item!"
-	const [message, setMessage] = useState(''); // Successful submission: "${itemName} successfully saved to your shopping list"
+	
+	const [message, setMessage] = useState(''); 
 
 	const { itemName, daysUntilNextPurchase } = formFields;
 
@@ -45,19 +44,6 @@ export function AddItem({ listToken, itemList }) {
 		}
 	};
 
-	// const handleSubmit = async (e) => {
-	// 	e.preventDefault();
-
-	// 	try {
-	// 		await addItem(listToken, {
-	// 			itemName,
-	// 			daysUntilNextPurchase,
-	// 		});
-	// 		setMessage(`${itemName} successfully saved to the database`);
-	// 	} catch (error) {
-	// 		setMessage('item not added to db');
-	// 	}
-	// };
 
 	const handleChange = (e) => {
 		if (message) {
