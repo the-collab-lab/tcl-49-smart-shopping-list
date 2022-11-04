@@ -3,29 +3,49 @@ import { Button, FormInput } from '../components';
 import { Link } from 'react-router-dom';
 import { addItem } from '../api';
 
-export function AddItem({ listToken }) {
+export function AddItem({ listToken, itemList }) {
 	const [formFields, setFormFields] = useState({
 		itemName: '',
 		daysUntilNextPurchase: 7,
 	});
 
-	const [message, setMessage] = useState('');
+	
+	const [message, setMessage] = useState(''); 
 
 	const { itemName, daysUntilNextPurchase } = formFields;
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 
+		const itemNamesNoChar = itemList.map((item) =>
+			item.name.toLowerCase().replace(/[^a-zA-Z0-9 ]/g, ''),
+		); // Item Names without special characters
+
 		try {
-			await addItem(listToken, {
-				itemName,
-				daysUntilNextPurchase,
-			});
-			setMessage(`${itemName} successfully saved to the database`);
+			if (itemName.replace(/\s/g, '').length === 0) {
+				setMessage("Error: Please enter your item's name.");
+			} else if (
+				itemNamesNoChar.includes(
+					itemName.toLowerCase().replace(/[^a-zA-Z0-9 ]/g, ''),
+				)
+			) 
+			
+			{
+				setMessage(
+					`${itemName} is already on your list. Please add a different item.`,
+				);
+			} else {
+				addItem(listToken, {
+					itemName,
+					daysUntilNextPurchase,
+				});
+				setMessage(`${itemName} was successfully saved to your shopping list!`);
+			}
 		} catch (error) {
-			setMessage('item not added to db');
+			setMessage('Error: This item not added to the database.');
 		}
 	};
+
 
 	const handleChange = (e) => {
 		if (message) {
