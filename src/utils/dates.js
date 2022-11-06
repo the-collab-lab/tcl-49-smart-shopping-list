@@ -12,10 +12,7 @@ export function getFutureDate(offset) {
 }
 
 export function getDaysBetweenDates(from, to) {
-	const fromDateObject = new Date(from);
-	const toDateObject = new Date(to);
-
-	const [fromTime, toTime] = [fromDateObject.getTime(), toDateObject.getTime()];
+	const [fromTime, toTime] = [from.getTime(), to.getTime()];
 
 	const diffInTime = Math.abs(fromTime - toTime);
 

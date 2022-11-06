@@ -2,12 +2,18 @@ import './ListItem.css';
 import { updateItem } from '../api';
 
 export function ListItem({ name, items, listToken }) {
-	const { isChecked, id, totalPurchases, dateLastPurchased } = items;
+	const {
+		isChecked,
+		id,
+		totalPurchases,
+		dateLastPurchased,
+		dateNextPurchased,
+	} = items;
 	const currentTime = new Date();
 
 	if (isChecked) {
 		const currentTimeToSec = currentTime.getTime() / 1000;
-		const lastPurchaseToSec = dateLastPurchased.seconds;
+		const lastPurchaseToSec = dateLastPurchased?.seconds || 0;
 		const timeElapsed = currentTimeToSec - lastPurchaseToSec;
 
 		const ONE_DAY_IN_SECONDS = 86400;
@@ -26,12 +32,13 @@ export function ListItem({ name, items, listToken }) {
 			};
 			updateItem(listToken, id, itemData);
 		} else {
-			const updatedTotalPurchases = totalPurchases + 1;
 			const itemData = {
 				isChecked: true,
-				totalPurchases: updatedTotalPurchases,
-				dateLastPurchased: currentTime,
+				dateLastPurchased,
+				dateNextPurchased,
+				totalPurchases: totalPurchases + 1,
 			};
+
 			updateItem(listToken, id, itemData);
 		}
 	};
