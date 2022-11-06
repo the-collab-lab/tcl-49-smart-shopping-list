@@ -16,23 +16,18 @@ export function AddItem({ listToken, itemList }) {
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 
-		//extracted out the function that checks the submitted item so we can have less nested code
-		// 	const handleItemErrors = () => {
-		// 		itemList.map((item) =>
-		// 			item.name.toLowerCase().replace(/[^a-zA-Z0-9 ]/g, ''),
-		// 		)
-		// 			if (itemName.replace(/\s/g, '').length === 0) {
-		// 				setMessage("Error: Please enter your item's name.");
-		// 			} else if (
-		// 				handleItemErrors.includes(
-		// 					itemName.toLowerCase().replace(/[^a-zA-Z0-9 ]/g, ''),
-		// 				)
-		// 			)
-		// 			{
-		// 				setMessage(
-		// 					`${itemName} is already on your list. Please add a different item.`,
-		// 				);
-		// 	}
+		// if (itemName.replace(/\s/g, '').length === 0) {
+		// 	setMessage("Error: Please enter your item's name.");
+		// } else if (
+		// 	itemNames.includes(itemName.toLowerCase().replace(/[^a-zA-Z0-9 ]/g, ''))
+		// ) {
+		// 	setMessage(
+		// 		`${itemName} is already on your list. Please add a different item.`,
+		// 	);
+		// } else {
+		// 	addItem(listToken, {itemName, daysUntilNextPurchase,});
+		// 	setMessage(`${itemName} was successfully saved to your shopping list!`);
+		// 	setFormFields(initialState);
 		// }
 
 		const itemNames = itemList.map((item) =>
