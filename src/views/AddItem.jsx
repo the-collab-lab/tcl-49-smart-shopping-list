@@ -35,17 +35,15 @@ export function AddItem({ listToken, itemList }) {
 		// 	}
 		// }
 
-		const itemNamesNoChar = itemList.map((item) =>
+		const items = itemList.map((item) =>
 			item.name.toLowerCase().replace(/[^a-zA-Z0-9 ]/g, ''),
-		); // Item Names without special characters
+		); // Item names without special characters for comparison
 
 		try {
 			if (itemName.replace(/\s/g, '').length === 0) {
 				setMessage("Error: Please enter your item's name.");
 			} else if (
-				itemNamesNoChar.includes(
-					itemName.toLowerCase().replace(/[^a-zA-Z0-9 ]/g, ''),
-				)
+				items.includes(itemName.toLowerCase().replace(/[^a-zA-Z0-9 ]/g, ''))
 			) {
 				setMessage(
 					`${itemName} is already on your list. Please add a different item.`,
