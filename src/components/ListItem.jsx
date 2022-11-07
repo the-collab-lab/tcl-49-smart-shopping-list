@@ -1,5 +1,6 @@
 import './ListItem.css';
 import { updateItem } from '../api';
+import { deleteItem } from '../api';
 
 export function ListItem({ name, items, listToken }) {
 	const { isChecked, id, totalPurchases, dateLastPurchased } = items;
@@ -36,6 +37,18 @@ export function ListItem({ name, items, listToken }) {
 		}
 	};
 
+	const handleDeleteItem = () => {
+		const confirm = window.confirm(`Do you really want to delete ${name}`);
+
+		try {
+			if (confirm) {
+				deleteItem(listToken, id);
+			}
+		} catch (error) {
+			console.log(error);
+		}
+	};
+
 	return (
 		<>
 			<li className="ListItem">
@@ -47,6 +60,9 @@ export function ListItem({ name, items, listToken }) {
 					defaultChecked={isChecked}
 				/>
 				<label htmlFor="purchased">{name}</label>
+				<div>
+					<button onClick={handleDeleteItem}>delete</button>
+				</div>
 			</li>
 		</>
 	);
