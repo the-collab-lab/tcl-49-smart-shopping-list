@@ -16,19 +16,35 @@ export function AddItem({ listToken, itemList }) {
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 
-		// if (itemName.replace(/\s/g, '').length === 0) {
-		// 	setMessage("Error: Please enter your item's name.");
-		// } else if (
-		// 	itemNames.includes(itemName.toLowerCase().replace(/[^a-zA-Z0-9 ]/g, ''))
-		// ) {
-		// 	setMessage(
-		// 		`${itemName} is already on your list. Please add a different item.`,
-		// 	);
-		// } else {
-		// 	addItem(listToken, {itemName, daysUntilNextPurchase,});
-		// 	setMessage(`${itemName} was successfully saved to your shopping list!`);
-		// 	setFormFields(initialState);
+		//Functions solution for each error Message
+		// const isValid = (itemName) => {
+		// 	checkEmpty(itemName);
+		// 	checkDuplicates(itemName);
 		// }
+
+		// const checkEmpty =(itemName) => {
+		// 	itemName.replace(/\s/g, '').length === 0;
+		// 	setMessage("Error: Please enter your item's name.");
+		// }
+
+		// const itemNames = itemList.map((item) =>
+		// item.name.toLowerCase().replace(/[^a-zA-Z0-9 ]/g, ''),); // Item names without special characters for comparison
+
+		// const checkDuplicates =(itemNames) => {
+		// 	itemNames.includes(itemName.toLowerCase().replace(/[^a-zA-Z0-9 ]/g, ''));
+		// 	setMessage(`${itemName} is already on your list. Please add a different item.`,);
+		// }
+
+		// try {
+		// 	isValid();
+		// 	addItem(listToken, {
+		// 		itemName,
+		// 		daysUntilNextPurchase,
+		// 	});
+		// 	setMessage(`${itemName} was successfully saved to your shopping list!`);
+		//  } catch (error) {
+		//  	setMessage('Error: This item not added to the database.');
+		//  }
 
 		const itemNames = itemList.map((item) =>
 			item.name.toLowerCase().replace(/[^a-zA-Z0-9 ]/g, ''),
