@@ -81,42 +81,40 @@ export async function updateItem(listId, docId, itemData) {
 	} = itemData;
 	let data;
 
-	const itemDataKeys = Object.keys(itemData);
+	const currentTime = new Date();
+	const dateLastPurchased = dlp ? dlp.toDate() : new Date();
+	const dateNextPurchased = dnp ? dnp.toDate() : new Date();
+	const previousEstimate = getDaysBetweenDates(
+		dateLastPurchased,
+		dateNextPurchased,
+	);
 
-	if (itemDataKeys.length === 1 && itemDataKeys.includes('isChecked')) {
-		data = itemData;
-	} else {
-		const currentTime = new Date();
-		const dateLastPurchased = dlp ? dlp.toDate() : new Date();
-		const dateNextPurchased = dnp ? dnp.toDate() : new Date();
-		const previousEstimate = getDaysBetweenDates(
-			dateLastPurchased,
-			dateNextPurchased,
-		);
-		const daysSinceLastTransaction = getDaysBetweenDates(
-			dateLastPurchased,
-			currentTime,
-		);
+	const daysSinceLastTransaction = getDaysBetweenDates(
+		dateLastPurchased,
+		currentTime,
+	);
 
-		const estimatedNextPurchaseInDays = calculateEstimate(
-			previousEstimate,
-			daysSinceLastTransaction,
-			totalPurchases,
-		);
-
-		data = {
-			isChecked,
-			totalPurchases,
-			dateLastPurchased: Timestamp.fromDate(dateLastPurchased),
-			dateNextPurchased: Timestamp.fromDate(
-				new Date(
-					currentTime.getFullYear(),
-					currentTime.getMonth(),
+	const estimatedNextPurchaseInDays = calculateEstimate(
+		previousEstimate,
+		daysSinceLastTransaction,
+		totalPurchases,
+	);
+	debugger;
+	data = {
+		isChecked,
+		totalPurchases,
+		dateLastPurchased: Timestamp.fromDate(dateLastPurchased),
+		dateNextPurchased: Timestamp.fromDate(
+			new Date(
+				// currentTime.getFullYear(),
+				// currentTime.getMonth(),
+				dateLastPurchased.setDate(
 					dateLastPurchased.getDate() + estimatedNextPurchaseInDays,
 				),
 			),
-		};
-	}
+		),
+	};
+	//}
 
 	console.log('data -->', data);
 
