@@ -16,47 +16,22 @@ export function AddItem({ listToken, itemList }) {
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 
-		// const isValid = (itemName) => {
-		// 	checkEmpty(itemName);
-		// 	checkDuplicates(itemName);
-		// }
+		const isEmpty = () => itemName.trim().length === 0;
 
-		// const checkEmpty = (itemName) => {
-		// 	itemName.trim().length === 0;
-		// 	setMessage("Error: Please enter your item's name.");
-
-		// }
-
-		// const checkDuplicates = (itemName, itemList) => {
-		// 	const itemNames = itemList.map((item) => item.name.toLowerCase().replace(/[^a-zA-Z0-9 ]/g, ''),);
-		// 	itemNames.includes(itemName.toLowerCase().replace(/[^a-zA-Z0-9 ]/g, ''));
-		// 	setMessage(`${itemName} is already on your list. Please add a different item.`,);
-		// }
-
-		// try {
-		// 	if(isEmpty()) {
-		// 	setMessage("Error: Please enter your item's name.");
-		// }
-		// 	addItem(listToken, {
-		// 		itemName,
-		// 		daysUntilNextPurchase,
-		// 	});
-		// 	setMessage(`${itemName} was successfully saved to your shopping list!`);
-		// } catch (error) {
-		// 	setMessage('Error: This item not added to the database.');
-		// }
-
-		const itemNames = itemList.map((item) =>
-			item.name.toLowerCase().replace(/[^a-zA-Z0-9 ]/g, ''),
-		); // Item names without special characters for comparison
+		const isDuplicated = () => {
+			const itemNames = itemList.map((item) =>
+				item.name.toLowerCase().replace(/[^a-zA-Z0-9 ]/g, ''),
+			);
+			return itemNames.includes(
+				itemName.toLowerCase().replace(/[^a-zA-Z0-9 ]/g, ''),
+			);
+		};
 
 		try {
-			// if (itemName.replace(/\s/g, '').length === 0) {
-			if (itemName.trim().length === 0) {
+			if (isEmpty()) {
+				console.log(isEmpty);
 				setMessage("Error: Please enter your item's name.");
-			} else if (
-				itemNames.includes(itemName.toLowerCase().replace(/[^a-zA-Z0-9 ]/g, ''))
-			) {
+			} else if (isDuplicated()) {
 				setMessage(
 					`${itemName} is already on your list. Please add a different item.`,
 				);
