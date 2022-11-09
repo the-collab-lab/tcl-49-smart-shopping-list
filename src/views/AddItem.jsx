@@ -16,21 +16,19 @@ export function AddItem({ listToken, itemList }) {
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 
-		//Functions solution for each error Message
 		// const isValid = (itemName) => {
 		// 	checkEmpty(itemName);
 		// 	checkDuplicates(itemName);
 		// }
 
-		// const checkEmpty =(itemName) => {
-		// 	itemName.replace(/\s/g, '').length === 0;
+		// const checkEmpty = (itemName) => {
+		// 	itemName.trim().length === 0;
 		// 	setMessage("Error: Please enter your item's name.");
+
 		// }
 
-		// const itemNames = itemList.map((item) =>
-		// item.name.toLowerCase().replace(/[^a-zA-Z0-9 ]/g, ''),); // Item names without special characters for comparison
-
-		// const checkDuplicates =(itemNames) => {
+		// const checkDuplicates = (itemName, itemList) => {
+		// 	const itemNames = itemList.map((item) => item.name.toLowerCase().replace(/[^a-zA-Z0-9 ]/g, ''),);
 		// 	itemNames.includes(itemName.toLowerCase().replace(/[^a-zA-Z0-9 ]/g, ''));
 		// 	setMessage(`${itemName} is already on your list. Please add a different item.`,);
 		// }
@@ -42,9 +40,9 @@ export function AddItem({ listToken, itemList }) {
 		// 		daysUntilNextPurchase,
 		// 	});
 		// 	setMessage(`${itemName} was successfully saved to your shopping list!`);
-		//  } catch (error) {
-		//  	setMessage('Error: This item not added to the database.');
-		//  }
+		// } catch (error) {
+		// 	setMessage('Error: This item not added to the database.');
+		// }
 
 		const itemNames = itemList.map((item) =>
 			item.name.toLowerCase().replace(/[^a-zA-Z0-9 ]/g, ''),
