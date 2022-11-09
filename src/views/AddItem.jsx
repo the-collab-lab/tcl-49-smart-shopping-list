@@ -20,10 +20,10 @@ export function AddItem({ listToken, itemList }) {
 
 		const isDuplicated = () => {
 			const itemNames = itemList.map((item) =>
-				item.name.toLowerCase().replace(/[^a-zA-Z0-9 ]/g, ''),
+				item.name.toLowerCase().replace(/[^a-zA-Z0-9 ]/gi, ''),
 			);
 			return itemNames.includes(
-				itemName.toLowerCase().replace(/[^a-zA-Z0-9 ]/g, ''),
+				itemName.toLowerCase().replace(/[^a-zA-Z0-9 ]/gi, ''),
 			);
 		};
 
