@@ -34,7 +34,9 @@ export function AddItem({ listToken, itemList }) {
 		// }
 
 		// try {
-		// 	isValid();
+		// 	if(isEmpty()) {
+		// 	setMessage("Error: Please enter your item's name.");
+		// }
 		// 	addItem(listToken, {
 		// 		itemName,
 		// 		daysUntilNextPurchase,
@@ -59,7 +61,7 @@ export function AddItem({ listToken, itemList }) {
 					`${itemName} is already on your list. Please add a different item.`,
 				);
 			} else {
-				addItem(listToken, {
+				await addItem(listToken, {
 					itemName,
 					daysUntilNextPurchase,
 				});
