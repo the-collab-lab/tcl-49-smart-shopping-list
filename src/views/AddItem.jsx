@@ -29,7 +29,6 @@ export function AddItem({ listToken, itemList }) {
 
 		try {
 			if (isEmpty()) {
-				console.log(isEmpty);
 				setMessage("Error: Please enter your item's name.");
 			} else if (isDuplicated()) {
 				setMessage(
