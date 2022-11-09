@@ -49,7 +49,8 @@ export function AddItem({ listToken, itemList }) {
 		); // Item names without special characters for comparison
 
 		try {
-			if (itemName.replace(/\s/g, '').length === 0) {
+			// if (itemName.replace(/\s/g, '').length === 0) {
+			if (itemName.trim().length === 0) {
 				setMessage("Error: Please enter your item's name.");
 			} else if (
 				itemNames.includes(itemName.toLowerCase().replace(/[^a-zA-Z0-9 ]/g, ''))
