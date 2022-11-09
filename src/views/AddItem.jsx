@@ -3,7 +3,7 @@ import { Button, FormInput } from '../components';
 import { Link } from 'react-router-dom';
 import { addItem } from '../api';
 
-export function AddItem({ listToken }) {
+export function AddItem({ listToken, itemList }) {
 	const [formFields, setFormFields] = useState({
 		itemName: '',
 		daysUntilNextPurchase: 7,
@@ -16,14 +16,33 @@ export function AddItem({ listToken }) {
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 
+		const isEmpty = () => itemName.trim().length === 0;
+
+		const isDuplicated = () => {
+			const itemNames = itemList.map((item) =>
+				item.name.toLowerCase().replace(/[^a-zA-Z0-9]+/g, ''),
+			);
+			return itemNames.includes(
+				itemName.toLowerCase().replace(/[^a-zA-Z0-9]+/g, ''),
+			);
+		};
+
 		try {
-			await addItem(listToken, {
-				itemName,
-				daysUntilNextPurchase,
-			});
-			setMessage(`${itemName} successfully saved to the database`);
+			if (isEmpty()) {
+				setMessage("Error: Please enter your item's name.");
+			} else if (isDuplicated()) {
+				setMessage(
+					`${itemName} is already on your list. Please add a different item.`,
+				);
+			} else {
+				await addItem(listToken, {
+					itemName,
+					daysUntilNextPurchase,
+				});
+				setMessage(`${itemName} was successfully saved to your shopping list!`);
+			}
 		} catch (error) {
-			setMessage('item not added to db');
+			setMessage('Error: This item not added to the database.');
 		}
 	};
 
