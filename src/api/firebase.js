@@ -99,15 +99,13 @@ export async function updateItem(listId, docId, itemData) {
 		daysSinceLastTransaction,
 		totalPurchases,
 	);
-	debugger;
+
 	data = {
 		isChecked,
 		totalPurchases,
 		dateLastPurchased: Timestamp.fromDate(dateLastPurchased),
 		dateNextPurchased: Timestamp.fromDate(
 			new Date(
-				// currentTime.getFullYear(),
-				// currentTime.getMonth(),
 				dateLastPurchased.setDate(
 					dateLastPurchased.getDate() + estimatedNextPurchaseInDays,
 				),
@@ -115,8 +113,6 @@ export async function updateItem(listId, docId, itemData) {
 		),
 	};
 	//}
-
-	console.log('data -->', data);
 
 	await updateDoc(docRef, data);
 }
