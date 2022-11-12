@@ -4,7 +4,6 @@ import { deleteItem } from '../api';
 
 import { useState } from 'react';
 
-
 export function ListItem({ name, items, listToken }) {
 	const {
 		isChecked,
@@ -50,12 +49,12 @@ export function ListItem({ name, items, listToken }) {
 		}
 	};
 
-	const handleDeleteItem = () => {
+	const handleDeleteItem = async () => {
 		const confirm = window.confirm(`Do you really want to delete ${name}`);
 
 		try {
 			if (confirm) {
-				deleteItem(listToken, id);
+				await deleteItem(listToken, id);
 			}
 		} catch (error) {
 			console.log(error);
