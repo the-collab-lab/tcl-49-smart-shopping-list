@@ -1,8 +1,8 @@
 import './ListItem.css';
 import { updateItem } from '../api';
+import { useState } from 'react';
 
 export function ListItem({ name, items, listToken }) {
-	//const [isDisabled, setIsDisabled] = useState(false);
 	const {
 		isChecked,
 		id,
@@ -10,8 +10,9 @@ export function ListItem({ name, items, listToken }) {
 		dateLastPurchased,
 		dateNextPurchased,
 	} = items;
+	const [isDisabled, setIsDisabled] = useState(isChecked);
+
 	const currentTime = new Date();
-	//setIsDisabled(isChecked);
 	function getTimeElapsed() {
 		const currentTimeToSec = currentTime.getTime() / 1000;
 		const lastPurchaseToSec = dateLastPurchased?.seconds || 0;
@@ -21,7 +22,6 @@ export function ListItem({ name, items, listToken }) {
 	}
 	function uncheckCheckboxIfOneDayHasPassed() {
 		if (isChecked) {
-			//debugger;
 			if (getTimeElapsed()) {
 				const itemData = {
 					...items,
@@ -29,7 +29,6 @@ export function ListItem({ name, items, listToken }) {
 				};
 
 				updateItem(listToken, id, itemData);
-				//setIsDisabled(false);
 			}
 		}
 	}
@@ -39,13 +38,12 @@ export function ListItem({ name, items, listToken }) {
 		if (!isChecked) {
 			const itemData = {
 				isChecked: true,
-				dateLastPurchased: null, // Resets the dateLastPurchased allowing it to be set to today's date
+				dateLastPurchased,
 				dateNextPurchased,
 				totalPurchases: totalPurchases + 1,
 			};
-
 			updateItem(listToken, id, itemData);
-			//setIsDisabled(true);
+			setIsDisabled(true);
 		}
 	};
 
@@ -58,7 +56,7 @@ export function ListItem({ name, items, listToken }) {
 					id="purchased"
 					onChange={handleCheckbox}
 					defaultChecked={isChecked}
-					disabled={isChecked}
+					disabled={isDisabled}
 				/>
 				<label htmlFor="purchased">{name}</label>
 			</li>

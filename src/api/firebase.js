@@ -8,7 +8,7 @@ import {
 	Timestamp,
 } from 'firebase/firestore';
 import { db } from './config';
-import { getFutureDate, getDaysBetweenDates } from '../utils';
+import { getFutureDate, getDaysBetweenDates, addDaysToDate } from '../utils';
 import { calculateEstimate } from '@the-collab-lab/shopping-list-utils';
 
 /**
@@ -73,25 +73,23 @@ export async function addItem(listId, { itemName, daysUntilNextPurchase }) {
 
 export async function updateItem(listId, docId, itemData) {
 	const docRef = doc(db, listId, docId);
-	const {
-		isChecked,
-		totalPurchases,
-		dateLastPurchased: dlp,
-		dateNextPurchased: dnp,
-	} = itemData;
+	const { isChecked, totalPurchases, dateLastPurchased, dateNextPurchased } =
+		itemData;
 	let data;
 
-	const currentTime = new Date();
-	const dateLastPurchased = dlp ? dlp.toDate() : new Date();
-	const dateNextPurchased = dnp ? dnp.toDate() : new Date();
+	const currentDate = new Date();
+	const oldDateLastPurchased = dateLastPurchased
+		? dateLastPurchased.toDate()
+		: currentDate;
+	const oldDateNextPurchased = dateNextPurchased.toDate();
 	const previousEstimate = getDaysBetweenDates(
-		dateLastPurchased,
-		dateNextPurchased,
+		oldDateLastPurchased,
+		oldDateNextPurchased,
 	);
 
 	const daysSinceLastTransaction = getDaysBetweenDates(
-		dateLastPurchased,
-		currentTime,
+		oldDateLastPurchased,
+		currentDate,
 	);
 
 	const estimatedNextPurchaseInDays = calculateEstimate(
@@ -100,19 +98,17 @@ export async function updateItem(listId, docId, itemData) {
 		totalPurchases,
 	);
 
+	const newDateNextPurchased = addDaysToDate(
+		currentDate,
+		estimatedNextPurchaseInDays,
+	);
+
 	data = {
 		isChecked,
 		totalPurchases,
-		dateLastPurchased: Timestamp.fromDate(dateLastPurchased),
-		dateNextPurchased: Timestamp.fromDate(
-			new Date(
-				dateLastPurchased.setDate(
-					dateLastPurchased.getDate() + estimatedNextPurchaseInDays,
-				),
-			),
-		),
+		dateLastPurchased: Timestamp.fromDate(currentDate),
+		dateNextPurchased: Timestamp.fromDate(newDateNextPurchased),
 	};
-	//}
 
 	await updateDoc(docRef, data);
 }

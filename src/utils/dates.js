@@ -18,3 +18,7 @@ export function getDaysBetweenDates(from, to) {
 
 	return Math.trunc(diffInTime / (1000 * 60 * 60 * 24));
 }
+
+export function addDaysToDate(date, offset) {
+	return new Date(date.getTime() + offset * ONE_DAY_IN_MILLISECONDS);
+}
