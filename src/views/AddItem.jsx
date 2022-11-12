@@ -16,9 +16,6 @@ export function AddItem({ listToken, itemList }) {
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 
-		const handleSubmit = async (e) => {
-			e.preventDefault();
-
 			const isEmpty = () => itemName.trim().length === 0;
 
 			const isDuplicated = () => {

@@ -6,9 +6,11 @@ import {
 	doc,
 	updateDoc,
 	deleteDoc,
+	Timestamp,
 } from 'firebase/firestore';
 import { db } from './config';
-import { getFutureDate } from '../utils';
+import { getFutureDate, getDaysBetweenDates, addDaysToDate } from '../utils';
+import { calculateEstimate } from '@the-collab-lab/shopping-list-utils';
 
 /**
  * Subscribe to changes on a specific list in the Firestore database (listId), and run a callback (handleSuccess) every time a change happens.
@@ -72,8 +74,44 @@ export async function addItem(listId, { itemName, daysUntilNextPurchase }) {
 
 export async function updateItem(listId, docId, itemData) {
 	const docRef = doc(db, listId, docId);
+	const { isChecked, totalPurchases, dateLastPurchased, dateNextPurchased } =
+		itemData;
+	let data;
 
-	await updateDoc(docRef, itemData);
+	const currentDate = new Date();
+	const oldDateLastPurchased = dateLastPurchased
+		? dateLastPurchased.toDate()
+		: currentDate;
+	const oldDateNextPurchased = dateNextPurchased.toDate();
+	const previousEstimate = getDaysBetweenDates(
+		oldDateLastPurchased,
+		oldDateNextPurchased,
+	);
+
+	const daysSinceLastTransaction = getDaysBetweenDates(
+		oldDateLastPurchased,
+		currentDate,
+	);
+
+	const estimatedNextPurchaseInDays = calculateEstimate(
+		previousEstimate,
+		daysSinceLastTransaction,
+		totalPurchases,
+	);
+
+	const newDateNextPurchased = addDaysToDate(
+		currentDate,
+		estimatedNextPurchaseInDays,
+	);
+
+	data = {
+		isChecked,
+		totalPurchases,
+		dateLastPurchased: Timestamp.fromDate(currentDate),
+		dateNextPurchased: Timestamp.fromDate(newDateNextPurchased),
+	};
+
+	await updateDoc(docRef, data);
 }
 
 export async function deleteItem(listId, docId, itemData) {
