@@ -42,7 +42,7 @@ export function AddItem({ listToken, itemList }) {
 				setMessage(`${itemName} was successfully saved to your shopping list!`);
 			}
 		} catch (error) {
-			setMessage('Error: This item not added to the database.');
+			setMessage('Error: This item was not added to the database.');
 		}
 	};
 

@@ -1,5 +1,7 @@
 import './ListItem.css';
 import { updateItem } from '../api';
+import { deleteItem } from '../api';
+
 import { useState } from 'react';
 
 export function ListItem({ name, items, listToken }) {
@@ -47,6 +49,18 @@ export function ListItem({ name, items, listToken }) {
 		}
 	};
 
+	const handleDeleteItem = async () => {
+		const confirm = window.confirm(`Do you really want to delete ${name}`);
+
+		try {
+			if (confirm) {
+				await deleteItem(listToken, id);
+			}
+		} catch (error) {
+			console.log(error);
+		}
+	};
+
 	return (
 		<>
 			<li className="ListItem">
@@ -59,6 +73,9 @@ export function ListItem({ name, items, listToken }) {
 					disabled={isDisabled}
 				/>
 				<label htmlFor="purchased">{name}</label>
+				<div>
+					<button onClick={handleDeleteItem}>delete</button>
+				</div>
 			</li>
 		</>
 	);
