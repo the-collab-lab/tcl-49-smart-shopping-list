@@ -1,38 +1,48 @@
 import { useState } from 'react';
 import { ListItem } from '../components';
+import ListPrompt from '../components/ListPrompt';
 
-export function List({ data }) {
+export function List({ data, listToken }) {
 	const [searchField, setSearchField] = useState('');
 
 	const onSearchChange = (e) => {
 		const { value } = e.target;
-		setSearchField(value.toLocaleLowerCase());
+		setSearchField(value.toLowerCase());
 	};
 
-	const filteredLists = data.filter(({ name }) =>
-		name.toLocaleLowerCase().includes(searchField),
+	const filteredListItems = data.filter(({ name }) =>
+		name.toLowerCase().includes(searchField),
 	);
 
 	return (
 		<>
-			<div>
-				<form>
-					<label htmlFor="filter-items">Filter items</label>
-					<input
-						type="search"
-						name="filter-items"
-						id="filter-items"
-						onChange={onSearchChange}
-						placeholder="Start typing here..."
-					/>
-				</form>
-			</div>
+			{data.length ? (
+				<div>
+					<form>
+						<label htmlFor="filter-items">Filter items</label>
+						<input
+							type="search"
+							name="filter-items"
+							id="filter-items"
+							onChange={onSearchChange}
+							value={searchField}
+						/>
+					</form>
 
-			<ul>
-				{filteredLists.map(({ name, id }) => (
-					<ListItem key={id} name={name} />
-				))}
-			</ul>
+					<ul>
+						{filteredListItems.map(({ name, ...items }) => (
+							<ListItem
+								key={items.id}
+								name={name}
+								items={items}
+								listToken={listToken}
+							/>
+						))}
+					</ul>
+				</div>
+			) : (
+				<ListPrompt />
+			)}
 		</>
 	);
 }
