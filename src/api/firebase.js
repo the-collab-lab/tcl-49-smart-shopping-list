@@ -134,11 +134,21 @@ export function comparePurchaseUrgency(data) {
 	const sortedItems = [];
 
 	//iterate through items array
-	data.forEach((item) => {
-		//conditional with days difference calculation betwee dlp and dnp?
-	});
+	data.forEach((item) => {});
 
 	//sort functionality: default sort is ascending
 	// converts elements into strings and compares them
 	// syntax: sort((a, b) => { /* … */ } )
+
+	//sort active vs inactive items (inactive lasts)
+	//sort by number of days till dnp
+	//sort alphabetically
+
+	// data.sort((a, b)=> {
+
+	// 	//how to compare 3 criterias (inactive, purchase, days)
+	// 	a.isInactive - b.isInactive
+	// 	a.isChecked - b.isChecked
+
+	// })
 }
