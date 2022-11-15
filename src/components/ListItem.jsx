@@ -66,23 +66,22 @@ export function ListItem({ name, items, listToken }) {
 	const handleUrgencyIndicator = () => {
 		if (items?.currentEstimate <= 7) {
 			return {
-				iconName: 'coffee',
+				iconName: 'tag',
 				prefix: 'fas',
-				faPrimaryColor: 'yellow',
 			};
 		} else if (items?.currentEstimate > 7 && items?.currentEstimate <= 30) {
 			return {
-				iconName: 'coffee',
+				iconName: 'tag',
 				prefix: 'fas',
 			};
 		} else if (items?.currentEstimate > 30 && items?.currentEstimate < 60) {
 			return {
-				iconName: 'coffee',
+				iconName: 'tag',
 				prefix: 'fas',
 			};
 		} else if (items?.currentEstimate > 60) {
 			return {
-				iconName: 'coffee',
+				iconName: 'tag',
 				prefix: 'fas',
 			};
 		}
@@ -90,13 +89,13 @@ export function ListItem({ name, items, listToken }) {
 
 	const handleUrgencyColor = () => {
 		if (items?.currentEstimate <= 7) {
+			return 'red';
+		} else if (items?.currentEstimate > 7 && items?.currentEstimate < 30) {
 			return 'yellow';
-		} else if (items?.currentEstimate > 7 && items?.currentEstimate <= 30) {
-			return 'yellow';
-		} else if (items?.currentEstimate > 30 && items?.currentEstimate < 60) {
-			return 'yellow';
+		} else if (items?.currentEstimate >= 30 && items?.currentEstimate <= 60) {
+			return 'green';
 		} else if (items?.currentEstimate > 60) {
-			return 'yellow';
+			return 'gray';
 		}
 	};
 
@@ -107,7 +106,7 @@ export function ListItem({ name, items, listToken }) {
 			<li className="ListItem">
 				<FontAwesomeIcon
 					icon={handleUrgencyIndicator()}
-					style={{ color: handleUrgencyColor() }}
+					style={{ color: handleUrgencyColor(), marginRight: 30 }}
 				/>
 				<input
 					type="checkbox"
