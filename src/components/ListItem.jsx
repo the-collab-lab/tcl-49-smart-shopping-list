@@ -1,6 +1,5 @@
 import './ListItem.css';
-import { updateItem } from '../api';
-import { deleteItem } from '../api';
+import { updateItem, deleteItem } from '../api/firebase';
 
 import { useState } from 'react';
 
@@ -61,9 +60,23 @@ export function ListItem({ name, items, listToken }) {
 		}
 	};
 
+	const handleUrgencyIndicator = () => {
+		if (items?.currentEstimate <= 7) {
+			return 'RED';
+		} else if (items?.currentEstimate > 7 && items?.currentEstimate <= 30) {
+			return 'GREEN';
+		} else if (items?.currentEstimate > 30 && items?.currentEstimate < 60) {
+			return 'BLUE';
+		} else {
+			return 'GRAY';
+		}
+	};
+
+	console.log(items.currentEstimate);
+
 	return (
 		<>
-			<li className="ListItem">
+			<li className="ListItem" style={{ color: handleUrgencyIndicator() }}>
 				<input
 					type="checkbox"
 					name="purchased"

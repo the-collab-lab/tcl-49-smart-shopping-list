@@ -69,6 +69,8 @@ export async function addItem(listId, { itemName, daysUntilNextPurchase }) {
 		isChecked: false,
 		name: itemName,
 		totalPurchases: 0,
+		previousEstimate: null,
+		currentEstimate: parseInt(daysUntilNextPurchase),
 	});
 }
 
