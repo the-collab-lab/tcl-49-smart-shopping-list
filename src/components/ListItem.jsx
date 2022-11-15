@@ -4,7 +4,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheckSquare, faCoffee } from '@fortawesome/fontawesome-free-solid';
 
 import { useState } from 'react';
-import { stylus } from 'docker/src/languages';
 
 export function ListItem({ name, items, listToken }) {
 	const {
@@ -99,7 +98,7 @@ export function ListItem({ name, items, listToken }) {
 		}
 	};
 
-	console.log(items.currentEstimate);
+	// console.log(items.currentEstimate);
 
 	return (
 		<>
