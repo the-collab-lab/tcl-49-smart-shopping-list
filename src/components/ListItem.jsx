@@ -1,7 +1,10 @@
 import './ListItem.css';
 import { updateItem, deleteItem } from '../api/firebase';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCheckSquare, faCoffee } from '@fortawesome/fontawesome-free-solid';
 
 import { useState } from 'react';
+import { stylus } from 'docker/src/languages';
 
 export function ListItem({ name, items, listToken }) {
 	const {
@@ -62,13 +65,38 @@ export function ListItem({ name, items, listToken }) {
 
 	const handleUrgencyIndicator = () => {
 		if (items?.currentEstimate <= 7) {
-			return 'RED';
+			return {
+				iconName: 'coffee',
+				prefix: 'fas',
+				faPrimaryColor: 'yellow',
+			};
 		} else if (items?.currentEstimate > 7 && items?.currentEstimate <= 30) {
-			return 'GREEN';
+			return {
+				iconName: 'coffee',
+				prefix: 'fas',
+			};
 		} else if (items?.currentEstimate > 30 && items?.currentEstimate < 60) {
-			return 'BLUE';
-		} else {
-			return 'GRAY';
+			return {
+				iconName: 'coffee',
+				prefix: 'fas',
+			};
+		} else if (items?.currentEstimate > 60) {
+			return {
+				iconName: 'coffee',
+				prefix: 'fas',
+			};
+		}
+	};
+
+	const handleUrgencyColor = () => {
+		if (items?.currentEstimate <= 7) {
+			return 'yellow';
+		} else if (items?.currentEstimate > 7 && items?.currentEstimate <= 30) {
+			return 'yellow';
+		} else if (items?.currentEstimate > 30 && items?.currentEstimate < 60) {
+			return 'yellow';
+		} else if (items?.currentEstimate > 60) {
+			return 'yellow';
 		}
 	};
 
@@ -76,7 +104,11 @@ export function ListItem({ name, items, listToken }) {
 
 	return (
 		<>
-			<li className="ListItem" style={{ color: handleUrgencyIndicator() }}>
+			<li className="ListItem">
+				<FontAwesomeIcon
+					icon={handleUrgencyIndicator()}
+					style={{ '--fa-primary-color': handleUrgencyColor() }}
+				/>
 				<input
 					type="checkbox"
 					name="purchased"
