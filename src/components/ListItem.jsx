@@ -107,7 +107,7 @@ export function ListItem({ name, items, listToken }) {
 			<li className="ListItem">
 				<FontAwesomeIcon
 					icon={handleUrgencyIndicator()}
-					style={{ '--fa-primary-color': handleUrgencyColor() }}
+					style={{ color: handleUrgencyColor() }}
 				/>
 				<input
 					type="checkbox"
