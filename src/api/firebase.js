@@ -129,3 +129,16 @@ export async function checkToken(tokenName = '') {
 
 	return !!snapshot.docs.length;
 }
+
+export function comparePurchaseUrgency(data) {
+	const sortedItems = [];
+
+	//iterate through items array
+	data.forEach((item) => {
+		//conditional with days difference calculation betwee dlp and dnp?
+	});
+
+	//sort functionality: default sort is ascending
+	// converts elements into strings and compares them
+	// syntax: sort((a, b) => { /* … */ } )
+}
