@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { ListItem } from '../components';
 import ListPrompt from '../components/ListPrompt';
+// import { comparePurchaseUrgency } from '../api/firebase';
 
 export function List({ data, listToken }) {
 	const [searchField, setSearchField] = useState('');
@@ -10,12 +11,19 @@ export function List({ data, listToken }) {
 		setSearchField(value.toLowerCase());
 	};
 
+	// const filteredListItems = sortedData.filter(({ name }) =>
+	// 	name.toLowerCase().includes(searchField),
+	// );
+
 	const filteredListItems = data.filter(({ name }) =>
 		name.toLowerCase().includes(searchField),
 	);
 
+	// const sortedData = comparePurchaseUrgency(data);
+
 	return (
 		<>
+			{/* {sortedData.length ? ( */}
 			{data.length ? (
 				<div>
 					<form>
@@ -36,6 +44,7 @@ export function List({ data, listToken }) {
 								name={name}
 								items={items}
 								listToken={listToken}
+								// urgency={items.urgency}
 							/>
 						))}
 					</ul>
