@@ -44,7 +44,7 @@ export function List({ data, listToken }) {
 								name={name}
 								items={items}
 								listToken={listToken}
-								// urgency={items.urgency}
+								// urgency={item.urgency}
 							/>
 						))}
 					</ul>
