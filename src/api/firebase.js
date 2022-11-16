@@ -131,24 +131,14 @@ export async function checkToken(tokenName = '') {
 }
 
 export function comparePurchaseUrgency(data) {
-	const sortedItems = [];
-
+	//const sortedItems = [];
 	//iterate through items array
-	data.forEach((item) => {});
-
-	//sort functionality: default sort is ascending
-	// converts elements into strings and compares them
-	// syntax: sort((a, b) => { /* … */ } )
-
-	//sort active vs inactive items (inactive lasts)
-	//sort by number of days till dnp
-	//sort alphabetically
-
-	// data.sort((a, b)=> {
-
-	// 	//how to compare 3 criterias (inactive, purchase, days)
+	//data.forEach((item) => {});
+	//data.sort((a, b)=> {
+	//	console.log(a.localCompare(b))
+	// 	//how to compare 3 criterias (inactive, purchase, alphabetically)
+	//a.name.localCompare(b.name); --> alphabetical order
 	// 	a.isInactive - b.isInactive
-	// 	a.isChecked - b.isChecked
-
-	// })
+	// 	a.isChecked - b.isChecked --> purchase
+	//	})
 }
