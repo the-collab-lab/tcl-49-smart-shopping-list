@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { ListItem } from '../components';
+import { ListSection } from '../components';
 import ListPrompt from '../components/ListPrompt';
 
 export function List({ data, listToken }) {
@@ -12,6 +12,19 @@ export function List({ data, listToken }) {
 
 	const filteredListItems = data.filter(({ name }) =>
 		name.toLowerCase().includes(searchField),
+	);
+
+	const buyingSoonList = filteredListItems.filter(
+		({ currentEstimate }) => currentEstimate <= 7,
+	);
+	const kindaBuyingSoonList = filteredListItems.filter(
+		({ currentEstimate }) => currentEstimate > 7 && currentEstimate < 30,
+	);
+	const notBuyingSoonList = filteredListItems.filter(
+		({ currentEstimate }) => currentEstimate >= 30 && currentEstimate < 60,
+	);
+	const inactiveList = filteredListItems.filter(
+		({ currentEstimate }) => currentEstimate > 60,
 	);
 
 	return (
@@ -29,16 +42,33 @@ export function List({ data, listToken }) {
 						/>
 					</form>
 
-					<ul>
-						{filteredListItems.map(({ name, ...items }) => (
-							<ListItem
-								key={items.id}
-								name={name}
-								items={items}
-								listToken={listToken}
-							/>
-						))}
-					</ul>
+					<ListSection
+						data={buyingSoonList}
+						title="Buying nowww"
+						listToken={listToken}
+						tagColor="red"
+					/>
+
+					<ListSection
+						data={kindaBuyingSoonList}
+						title="Buying kinda soon"
+						listToken={listToken}
+						tagColor="yellow"
+					/>
+
+					<ListSection
+						data={notBuyingSoonList}
+						title="Buying not soon"
+						listToken={listToken}
+						tagColor="green"
+					/>
+
+					<ListSection
+						data={inactiveList}
+						title="Inactive, please"
+						listToken={listToken}
+						tagColor="pink"
+					/>
 				</div>
 			) : (
 				<ListPrompt />

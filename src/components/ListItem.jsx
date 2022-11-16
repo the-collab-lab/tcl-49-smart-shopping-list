@@ -62,51 +62,11 @@ export function ListItem({ name, items, listToken }) {
 		}
 	};
 
-	const handleUrgencyIndicator = () => {
-		if (items?.currentEstimate <= 7) {
-			return {
-				iconName: 'tag',
-				prefix: 'fas',
-			};
-		} else if (items?.currentEstimate > 7 && items?.currentEstimate <= 30) {
-			return {
-				iconName: 'tag',
-				prefix: 'fas',
-			};
-		} else if (items?.currentEstimate > 30 && items?.currentEstimate < 60) {
-			return {
-				iconName: 'tag',
-				prefix: 'fas',
-			};
-		} else if (items?.currentEstimate > 60) {
-			return {
-				iconName: 'tag',
-				prefix: 'fas',
-			};
-		}
-	};
-
-	const handleUrgencyColor = () => {
-		if (items?.currentEstimate <= 7) {
-			return 'red';
-		} else if (items?.currentEstimate > 7 && items?.currentEstimate < 30) {
-			return 'yellow';
-		} else if (items?.currentEstimate >= 30 && items?.currentEstimate <= 60) {
-			return 'green';
-		} else if (items?.currentEstimate > 60) {
-			return 'gray';
-		}
-	};
-
 	// console.log(items.currentEstimate);
 
 	return (
 		<>
 			<li className="ListItem">
-				<FontAwesomeIcon
-					icon={handleUrgencyIndicator()}
-					style={{ color: handleUrgencyColor(), marginRight: 30 }}
-				/>
 				<input
 					type="checkbox"
 					name="purchased"
