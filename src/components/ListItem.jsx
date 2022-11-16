@@ -1,8 +1,5 @@
 import './ListItem.css';
 import { updateItem, deleteItem } from '../api/firebase';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCheckSquare, faCoffee } from '@fortawesome/fontawesome-free-solid';
-
 import { useState } from 'react';
 
 export function ListItem({ name, items, listToken }) {
@@ -62,7 +59,17 @@ export function ListItem({ name, items, listToken }) {
 		}
 	};
 
-	// console.log(items.currentEstimate);
+	const handleAriaForColors = () => {
+		if (items?.currentEstimate <= 7) {
+			return 'soon';
+		} else if (items?.currentEstimate > 7 && items?.currentEstimate < 30) {
+			return 'kind of soon';
+		} else if (items?.currentEstimate >= 30 && items?.currentEstimate < 60) {
+			return 'not soon';
+		} else if (items?.currentEstimate > 60) {
+			return 'inactive';
+		}
+	};
 
 	return (
 		<>
@@ -74,6 +81,7 @@ export function ListItem({ name, items, listToken }) {
 					onChange={handleCheckbox}
 					defaultChecked={isChecked}
 					disabled={isDisabled}
+					aria-label={handleAriaForColors}
 				/>
 				<label htmlFor="purchased">{name}</label>
 				<div>

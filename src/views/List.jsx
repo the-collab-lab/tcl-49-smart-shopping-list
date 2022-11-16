@@ -44,28 +44,28 @@ export function List({ data, listToken }) {
 
 					<ListSection
 						data={buyingSoonList}
-						title="Buying nowww"
+						title="What to buy this week"
 						listToken={listToken}
 						tagColor="red"
 					/>
 
 					<ListSection
 						data={kindaBuyingSoonList}
-						title="Buying kinda soon"
+						title="What to buy soon"
 						listToken={listToken}
 						tagColor="yellow"
 					/>
 
 					<ListSection
 						data={notBuyingSoonList}
-						title="Buying not soon"
+						title="What to buy next month"
 						listToken={listToken}
 						tagColor="green"
 					/>
 
 					<ListSection
 						data={inactiveList}
-						title="Inactive, please"
+						title="Inactive items"
 						listToken={listToken}
 						tagColor="pink"
 					/>
