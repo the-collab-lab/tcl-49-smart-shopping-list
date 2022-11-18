@@ -131,24 +131,31 @@ export async function checkToken(tokenName = '') {
 }
 
 export function comparePurchaseUrgency(data) {
-	const sortedItems = [];
+	const convertedData = data.map((item) => {
+		const currentDate = new Date();
 
-	//iterate through items array
-	data.forEach((item) => {});
+		const daysSinceLastPurchase = item.dateLastPurchased
+			? getDaysBetweenDates(item.dateLastPurchased.toDate(), currentDate)
+			: null;
 
-	//sort functionality: default sort is ascending
-	// converts elements into strings and compares them
-	// syntax: sort((a, b) => { /* … */ } )
+		// assumption: daysUntilNextPurchase are in the future
+		const daysUntilNextPurchase = getDaysBetweenDates(
+			currentDate,
+			item.dateNextPurchased.toDate(),
+		);
 
-	//sort active vs inactive items (inactive lasts)
-	//sort by number of days till dnp
-	//sort alphabetically
+		return { ...item, daysSinceLastPurchase, daysUntilNextPurchase };
+	});
 
-	// data.sort((a, b)=> {
-
-	// 	//how to compare 3 criterias (inactive, purchase, days)
-	// 	a.isInactive - b.isInactive
-	// 	a.isChecked - b.isChecked
-
-	// })
+	// discrepancies with sort on Firefox vs Chrome. Sort is working only on Chrome: https://v8.dev/features/stable-sort
+	return convertedData.sort((item1, item2) => {
+		if (item1.daysSinceLastPurchase && item1.daysSinceLastPurchase > 60) {
+			if (item1.daysSinceLastPurchase < item2.daysSinceLastPurchase) return -1;
+			if (item1.daysSinceLastPurchase > item2.daysSinceLastPurchase) return 1;
+		}
+		if (item1.daysUntilNextPurchase < item2.daysUntilNextPurchase) return -1;
+		if (item1.daysUntilNextPurchase > item2.daysUntilNextPurchase) return 1;
+		if (item1.name > item2.name) return 1;
+		if (item1.name < item2.name) return -1;
+	});
 }
