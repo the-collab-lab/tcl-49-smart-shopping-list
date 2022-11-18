@@ -131,11 +131,31 @@ export async function checkToken(tokenName = '') {
 }
 
 export function comparePurchaseUrgency(data) {
-	//const sortedItems = [];
+	const convertedData = data.map((item) => {
+		const currentDate = new Date();
 
-	//data.sort((a, b)=> {
-	//a.name.localCompare(b.name); --> alphabetical order
-	//	})
+		const daysSinceLastPurchase = item.dateLastPurchased
+			? getDaysBetweenDates(item.dateLastPurchased.toDate(), currentDate)
+			: null;
 
-	const convertedData = data.map((item) => {});
+		// assumption: daysUntilNextPurchase are in the future
+		const daysUntilNextPurchase = getDaysBetweenDates(
+			currentDate,
+			item.dateNextPurchased.toDate(),
+		);
+
+		return { ...item, daysSinceLastPurchase, daysUntilNextPurchase };
+	});
+
+	// discrepancies with sort on Firefox vs Chrome. Sort is working only on Chrome: https://v8.dev/features/stable-sort
+	return convertedData.sort((item1, item2) => {
+		if (item1.daysSinceLastPurchase && item1.daysSinceLastPurchase > 60) {
+			if (item1.daysSinceLastPurchase < item2.daysSinceLastPurchase) return -1;
+			if (item1.daysSinceLastPurchase > item2.daysSinceLastPurchase) return 1;
+		}
+		if (item1.daysUntilNextPurchase < item2.daysUntilNextPurchase) return -1;
+		if (item1.daysUntilNextPurchase > item2.daysUntilNextPurchase) return 1;
+		if (item1.name > item2.name) return 1;
+		if (item1.name < item2.name) return -1;
+	});
 }
