@@ -16,7 +16,6 @@ export function List({ data, listToken }) {
 	);
 
 	const sortedList = comparePurchaseUrgency(data);
-
 	console.log(sortedList);
 
 	const buyingSoonList = sortedList.filter(
@@ -24,11 +23,11 @@ export function List({ data, listToken }) {
 	);
 	const kindaBuyingSoonList = sortedList.filter(
 		({ daysUntilNextPurchase }) =>
-			daysUntilNextPurchase > 7 && daysUntilNextPurchase < 30,
+			daysUntilNextPurchase > 7 && daysUntilNextPurchase < 29,
 	);
 	const notBuyingSoonList = sortedList.filter(
 		({ daysUntilNextPurchase }) =>
-			daysUntilNextPurchase >= 30 && daysUntilNextPurchase < 60,
+			daysUntilNextPurchase >= 29 && daysUntilNextPurchase < 60,
 	);
 	const inactiveList = sortedList.filter(
 		({ daysUntilNextPurchase }) => daysUntilNextPurchase > 60,
