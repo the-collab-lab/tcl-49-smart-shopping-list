@@ -1,6 +1,7 @@
 import './ListItem.css';
 import { updateItem, deleteItem } from '../api/firebase';
 import { useState } from 'react';
+import { comparePurchaseUrgency } from '../api/firebase';
 
 export function ListItem({ name, items, listToken }) {
 	const {
@@ -33,6 +34,8 @@ export function ListItem({ name, items, listToken }) {
 		}
 	}
 
+	// const sortedList = comparePurchaseUrgency(data);
+
 	uncheckCheckboxIfOneDayHasPassed();
 	const handleCheckbox = () => {
 		if (!isChecked) {
@@ -60,13 +63,13 @@ export function ListItem({ name, items, listToken }) {
 	};
 
 	const handleAriaForColors = () => {
-		if (items?.currentEstimate <= 7) {
+		if (items?.sortedList <= 7) {
 			return 'soon';
-		} else if (items?.currentEstimate > 7 && items?.currentEstimate < 30) {
+		} else if (items?.sortedList > 7 && items?.sortedList < 30) {
 			return 'kind of soon';
-		} else if (items?.currentEstimate >= 30 && items?.currentEstimate < 60) {
+		} else if (items?.sortedList >= 30 && items?.sortedList < 60) {
 			return 'not soon';
-		} else if (items?.currentEstimate > 60) {
+		} else if (items?.sortedList > 60) {
 			return 'inactive';
 		}
 	};

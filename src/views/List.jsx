@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { ListSection } from '../components';
 import ListPrompt from '../components/ListPrompt';
+import { comparePurchaseUrgency } from '../api/firebase';
 
 export function List({ data, listToken }) {
 	const [searchField, setSearchField] = useState('');
@@ -14,17 +15,23 @@ export function List({ data, listToken }) {
 		name.toLowerCase().includes(searchField),
 	);
 
-	const buyingSoonList = filteredListItems.filter(
-		({ currentEstimate }) => currentEstimate <= 7,
+	const sortedList = comparePurchaseUrgency(data);
+
+	console.log(sortedList);
+
+	const buyingSoonList = sortedList.filter(
+		({ daysUntilNextPurchase }) => daysUntilNextPurchase < 7,
 	);
-	const kindaBuyingSoonList = filteredListItems.filter(
-		({ currentEstimate }) => currentEstimate > 7 && currentEstimate < 30,
+	const kindaBuyingSoonList = sortedList.filter(
+		({ daysUntilNextPurchase }) =>
+			daysUntilNextPurchase > 7 && daysUntilNextPurchase < 30,
 	);
-	const notBuyingSoonList = filteredListItems.filter(
-		({ currentEstimate }) => currentEstimate >= 30 && currentEstimate < 60,
+	const notBuyingSoonList = sortedList.filter(
+		({ daysUntilNextPurchase }) =>
+			daysUntilNextPurchase >= 30 && daysUntilNextPurchase < 60,
 	);
-	const inactiveList = filteredListItems.filter(
-		({ currentEstimate }) => currentEstimate > 60,
+	const inactiveList = sortedList.filter(
+		({ daysUntilNextPurchase }) => daysUntilNextPurchase > 60,
 	);
 
 	return (
@@ -44,21 +51,21 @@ export function List({ data, listToken }) {
 
 					<ListSection
 						data={buyingSoonList}
-						title="What to buy this week"
+						title="What to buy soon"
 						listToken={listToken}
 						tagColor="red"
 					/>
 
 					<ListSection
 						data={kindaBuyingSoonList}
-						title="What to buy soon"
+						title="What to buy kind of soon"
 						listToken={listToken}
 						tagColor="yellow"
 					/>
 
 					<ListSection
 						data={notBuyingSoonList}
-						title="What to buy next month"
+						title="What not to buy soon"
 						listToken={listToken}
 						tagColor="green"
 					/>

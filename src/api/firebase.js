@@ -69,8 +69,8 @@ export async function addItem(listId, { itemName, daysUntilNextPurchase }) {
 		isChecked: false,
 		name: itemName,
 		totalPurchases: 0,
-		previousEstimate: null,
-		currentEstimate: parseInt(daysUntilNextPurchase),
+		// previousEstimate: null,
+		// currentEstimate: parseInt(daysUntilNextPurchase),
 	});
 }
 
@@ -130,4 +130,31 @@ export async function checkToken(tokenName = '') {
 	const snapshot = await getDocs(collectionRef);
 
 	return !!snapshot.docs.length;
+}
+
+//added the compare urgency function
+export function comparePurchaseUrgency(data) {
+	const convertedData = data.map((item) => {
+		const currentDate = new Date();
+		const daysSinceLastPurchase = item.dateLastPurchased
+			? getDaysBetweenDates(item.dateLastPurchased.toDate(), currentDate)
+			: null;
+		// assumption: daysUntilNextPurchase are in the future
+		const daysUntilNextPurchase = getDaysBetweenDates(
+			currentDate,
+			item.dateNextPurchased.toDate(),
+		);
+		return { ...item, daysSinceLastPurchase, daysUntilNextPurchase };
+	});
+	// discrepancies with sort on Firefox vs Chrome. Sort is working only on Chrome: https://v8.dev/features/stable-sort
+	return convertedData.sort((item1, item2) => {
+		if (item1.daysSinceLastPurchase && item1.daysSinceLastPurchase > 60) {
+			if (item1.daysSinceLastPurchase < item2.daysSinceLastPurchase) return -1;
+			if (item1.daysSinceLastPurchase > item2.daysSinceLastPurchase) return 1;
+		}
+		if (item1.daysUntilNextPurchase < item2.daysUntilNextPurchase) return -1;
+		if (item1.daysUntilNextPurchase > item2.daysUntilNextPurchase) return 1;
+		if (item1.name > item2.name) return 1;
+		if (item1.name < item2.name) return -1;
+	});
 }
