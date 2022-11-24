@@ -94,27 +94,27 @@ export function AddItem({ listToken, itemList }) {
 								</label>
 							</div>
 							<div className="radio-btn">
-								<label htmlFor="notSoon">
-									<input
-										type="radio"
-										name="daysUntilNextPurchase"
-										id="notSoon"
-										value={14 || daysUntilNextPurchase}
-										onChange={handleChange}
-									/>
-									Not Soon
-								</label>
-							</div>
-							<div className="radio-btn">
 								<label htmlFor="kindOfSoon">
 									<input
 										type="radio"
 										name="daysUntilNextPurchase"
 										id="kindOfSoon"
-										value={30 || daysUntilNextPurchase}
+										value={14 || daysUntilNextPurchase}
 										onChange={handleChange}
 									/>
 									Kind of Soon
+								</label>
+							</div>
+							<div className="radio-btn">
+								<label htmlFor="notSoon">
+									<input
+										type="radio"
+										name="daysUntilNextPurchase"
+										id="notSoon"
+										value={30 || daysUntilNextPurchase}
+										onChange={handleChange}
+									/>
+									Not soon
 								</label>
 							</div>
 						</fieldset>
