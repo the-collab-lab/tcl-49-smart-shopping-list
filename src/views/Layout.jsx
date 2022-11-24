@@ -1,11 +1,11 @@
 import { Outlet, NavLink } from 'react-router-dom';
 
-import './Layout.css';
+// import './Layout.css';
 
 export function Layout() {
 	return (
 		<>
-			<div className="Layout">
+			<div className="Layout bg-slate-200 w-3/5 mx-auto">
 				<header className="Layout-header">
 					<h1 className="text-3xl font-bold underline">Smart shopping list</h1>
 				</header>
