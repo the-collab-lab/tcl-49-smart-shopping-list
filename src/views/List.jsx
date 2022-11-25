@@ -36,7 +36,7 @@ export function List({ data, listToken }) {
 	return (
 		<>
 			{data.length ? (
-				<div>
+				<div className="bg-white rounded-lg drop-shadow-lg">
 					<form>
 						<label htmlFor="filter-items">Filter items</label>
 						<input
