@@ -7,7 +7,7 @@ export function Layout() {
 		<>
 			<div className="Layout mt-14 w-3/5 mx-auto">
 				<header className="Layout-header">
-					<h1 className="text-3xl text-center font-bold underline">
+					<h1 className="text-4xl mb-4 text-center font-bold underline text-white drop-shadow-lg">
 						Smart shopping list
 					</h1>
 				</header>
@@ -15,13 +15,22 @@ export function Layout() {
 					<Outlet />
 				</main>
 				<nav className="Nav bg-white rounded-lg drop-shadow-lg mt-8 py-4 flex justify-around">
-					<NavLink to="/" className="Nav-link">
+					<NavLink
+						to="/"
+						className="Nav-link font-semibold hover:text-green-600 focus:text-green-600"
+					>
 						Home
 					</NavLink>
-					<NavLink to="/list" className="Nav-link">
+					<NavLink
+						to="/list"
+						className="Nav-link font-semibold hover:text-green-600 focus:text-green-600"
+					>
 						List
 					</NavLink>
-					<NavLink to="/add-item" className="Nav-link">
+					<NavLink
+						to="/add-item"
+						className="Nav-link font-semibold hover:text-green-600 focus:text-green-600"
+					>
 						Add Item
 					</NavLink>
 				</nav>
