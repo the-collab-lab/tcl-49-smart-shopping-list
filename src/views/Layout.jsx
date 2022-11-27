@@ -5,7 +5,7 @@ import './Layout.css';
 export function Layout() {
 	return (
 		<>
-			<div className="Layout mt-14 w-3/5 mx-auto">
+			<div className="Layout mt-14 w-4/5 mx-auto">
 				<header className="Layout-header">
 					<h1 className="text-4xl mb-4 text-center font-bold underline text-white ">
 						Smart shopping list

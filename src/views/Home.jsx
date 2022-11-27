@@ -32,10 +32,10 @@ export function Home({
 	};
 
 	return (
-		<div className="Home w-full mx-auto py-4 bg-white rounded-lg drop-shadow-lg">
+		<div className="Home w-full mx-auto py-9 bg-white rounded-lg drop-shadow-lg text-center">
 			{!listToken && (
 				<button
-					className="bg-green-600 py-2 px-3 rounded-full text-white shadow-md hover:text-green-600 hover:bg-transparent hover:border-solid hover:border-2 hover:font-semibold"
+					className=" bg-green-600 py-2 px-3 rounded-full text-white shadow-md hover:text-green-600 hover:bg-transparent hover:border-solid hover:border-2 hover:font-semibold"
 					onClick={handleClick}
 				>
 					Create list
