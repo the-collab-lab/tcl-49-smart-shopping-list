@@ -57,7 +57,7 @@ export function AddItem({ listToken, itemList }) {
 	};
 
 	return (
-		<div className="shopping-form-container">
+		<div className="shopping-form-container w-full mx-auto py-4 pl-5 bg-white rounded-lg drop-shadow-lg">
 			{message ? (
 				<div>
 					<h2>{message}</h2>
@@ -77,7 +77,7 @@ export function AddItem({ listToken, itemList }) {
 						placeholder="item name"
 						value={itemName}
 					/>
-					<div className="select-next-purchase-buttons">
+					<div className="select-next-purchase-buttons mb-4">
 						<fieldset>
 							<legend>How soon will you buy this again?</legend>
 							<div className="radio-btn">
