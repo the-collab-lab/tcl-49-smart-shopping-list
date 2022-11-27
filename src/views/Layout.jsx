@@ -7,7 +7,7 @@ export function Layout() {
 		<>
 			<div className="Layout mt-14 w-3/5 mx-auto">
 				<header className="Layout-header">
-					<h1 className="text-4xl mb-4 text-center font-bold underline text-white drop-shadow-lg">
+					<h1 className="text-4xl mb-4 text-center font-bold underline text-white ">
 						Smart shopping list
 					</h1>
 				</header>

@@ -32,8 +32,15 @@ export function Home({
 	};
 
 	return (
-		<div className="Home">
-			{!listToken && <button onClick={handleClick}>Create list</button>}
+		<div className="Home w-full mx-auto py-4 bg-white rounded-lg drop-shadow-lg">
+			{!listToken && (
+				<button
+					className="bg-green-600 py-2 px-3 rounded-full text-white shadow-md hover:text-green-600 hover:bg-transparent hover:border-solid hover:border-2 hover:font-semibold"
+					onClick={handleClick}
+				>
+					Create list
+				</button>
+			)}
 
 			<form onSubmit={handleSubmit}>
 				<FormInput
