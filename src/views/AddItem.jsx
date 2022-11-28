@@ -62,7 +62,9 @@ export function AddItem({ listToken, itemList }) {
 				<div>
 					<h2>{message}</h2>
 					<Link to="/list">
-						<button>View the list</button>
+						<button className="bg-green-600 py-2 px-3 my-3 rounded-full text-white shadow-md hover:text-green-600 hover:bg-transparent hover:border-solid hover:border-2 hover:font-semibold">
+							View the list
+						</button>
 					</Link>
 				</div>
 			) : (
