@@ -13,7 +13,7 @@ export const ListSection = ({ title, data, listToken, tagColor }) => {
 				}}
 				style={{ color: tagColor, marginRight: 30 }}
 			/>
-			<h3>{title}</h3>
+			<h3 className="font-semibold">{title}</h3>
 			<ul>
 				{/* filter items be4 render */}
 				{data.map(({ name, ...items }) => (

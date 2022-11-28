@@ -86,9 +86,16 @@ export function ListItem({ name, items, listToken }) {
 					disabled={isDisabled}
 					aria-label={handleAriaForColors}
 				/>
-				<label htmlFor="purchased">{name}</label>
+				<label className="text-2xl ml-1 mr-2" htmlFor="purchased">
+					{name}
+				</label>
 				<div>
-					<button onClick={handleDeleteItem}>delete</button>
+					<button
+						className="delete-button ml-2 text-base"
+						onClick={handleDeleteItem}
+					>
+						delete
+					</button>
 				</div>
 			</li>
 		</>

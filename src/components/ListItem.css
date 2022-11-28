@@ -12,3 +12,11 @@
 .ListItem-label {
 	margin-left: 0.2em;
 }
+
+li {
+	font-family: 'Caveat', cursive;
+}
+
+.delete-button {
+	font-family: 'Inter', sans-serif;
+}
