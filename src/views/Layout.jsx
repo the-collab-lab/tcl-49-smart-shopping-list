@@ -10,9 +10,9 @@ export function Layout() {
 	return (
 		<>
 			<div className="Layout mt-14 w-4/5 mx-auto">
-				<header className="Layout-header flex justify-center items-stretch">
+				<header className="Layout-header flex justify-center items-stretch mb-4">
 					<ShoppingCartIcon className="h-11 w-11 text-white mx-1 drop-shadow" />
-					<h1 className="text-4xl mb-4 text-center font-bold underline text-white">
+					<h1 className="text-3xl text-center font-bold underline text-white">
 						Smart shopping list
 					</h1>
 				</header>
