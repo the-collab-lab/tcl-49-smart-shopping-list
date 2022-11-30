@@ -38,7 +38,7 @@ export function List({ data, listToken }) {
 			{data.length ? (
 				<div className="bg-white rounded-lg drop-shadow-lg py-9 pl-5">
 					<form>
-						<label htmlFor="filter-items">Filter items</label>
+						<label htmlFor="filter-items font-inter">Filter items</label>
 						<input
 							className="border-2 rounded ml-1 w-2/4"
 							type="search"

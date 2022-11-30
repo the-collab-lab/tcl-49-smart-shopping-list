@@ -76,7 +76,7 @@ export function ListItem({ name, items, listToken }) {
 
 	return (
 		<>
-			<li className="ListItem flex flex-row items-baseline">
+			<li className="ListItem flex flex-row items-baseline font-caveat">
 				<input
 					type="checkbox"
 					name="purchased"
@@ -91,7 +91,7 @@ export function ListItem({ name, items, listToken }) {
 				</label>
 				<div>
 					<button
-						className="delete-button ml-2 text-base"
+						className="delete-button ml-2 text-base font-inter"
 						onClick={handleDeleteItem}
 					>
 						delete

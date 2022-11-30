@@ -15,7 +15,7 @@ export const ListSection = ({ title, data, listToken, tagColor }) => {
 					}}
 					style={{ color: tagColor }}
 				/>
-				<h3 className="font-semibold">{title}</h3>
+				<h3 className="font-semibold font-inter">{title}</h3>
 			</div>
 
 			<ul>
