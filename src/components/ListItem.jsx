@@ -76,7 +76,7 @@ export function ListItem({ name, items, listToken }) {
 
 	return (
 		<>
-			<li className="ListItem">
+			<li className="ListItem flex flex-row items-baseline">
 				<input
 					type="checkbox"
 					name="purchased"

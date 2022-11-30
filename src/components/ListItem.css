@@ -1,18 +1,3 @@
-.ListItem {
-	align-items: baseline;
-	display: flex;
-	flex-direction: row;
-	font-size: 1.2em;
-}
-
-.ListItem-checkbox {
-	accent-color: var(--color-accent);
-}
-
-.ListItem-label {
-	margin-left: 0.2em;
-}
-
 li {
 	font-family: 'Caveat', cursive;
 }
