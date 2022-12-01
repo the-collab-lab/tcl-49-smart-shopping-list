@@ -86,7 +86,7 @@ export function ListItem({ name, items, listToken }) {
 					disabled={isDisabled}
 					aria-label={handleAriaForColors}
 				/>
-				<label className="text-2xl ml-1 mr-2" htmlFor="purchased">
+				<label className="item-name ml-2.5 mr-2" htmlFor="purchased">
 					{name}
 				</label>
 				<div>

@@ -4,11 +4,11 @@ import { Link } from 'react-router-dom';
 export default function PromptButton() {
 	return (
 		<div className="w-full flex flex-col items-center">
-			<p className="text-center text-rose-700 font-semibold text-base drop-shadow-xl">
-				Your shopping list is currently empty
+			<p className="text-center text-red-700 m-2 font-normal">
+				Your shopping list is currently empty. Please add an item. :)
 			</p>
 			<Link
-				className="add-prompt w-auto text-center mt-2 bg-green-600 py-2 px-3 rounded-full text-white shadow-md hover:text-green-600 hover:bg-white hover:border-solid hover:border-2 hover:border-green-600 hover:font-semibold"
+				className="bg-green-500 py-1 px-3 m-6 rounded text-white hover:text-green-700 hover:bg-transparent hover:border-2 hover:font-normal"
 				to="/add-item"
 			>
 				Add an item
