@@ -9,7 +9,8 @@
  */
 
 h1 {
-	color: #1a1a1a !important;
+	color: white !important;
+	text-decoration: underline !important;
 	font-family: 'Caveat', cursive;
 }
 
@@ -23,7 +24,13 @@ h1 {
 	margin-left: 40px !important;
 }
 
-.item-name {
+.item-name,
+.delete-button {
 	font-family: '', sans-serif;
 	font-weight: 400;
+}
+
+.delete-button {
+	padding: 2px 5px !important;
+	margin-top: 1px !important;
 }

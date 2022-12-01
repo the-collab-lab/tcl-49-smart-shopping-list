@@ -2,6 +2,7 @@ import './ListItem.css';
 import { updateItem, deleteItem } from '../api/firebase';
 import { useState } from 'react';
 import { comparePurchaseUrgency } from '../api/firebase';
+import { BackspaceIcon } from '@heroicons/react/24/solid';
 
 export function ListItem({ name, items, listToken }) {
 	const {
@@ -76,7 +77,7 @@ export function ListItem({ name, items, listToken }) {
 
 	return (
 		<>
-			<li className="ListItem flex flex-row items-baseline font-caveat">
+			<li className="ListItem flex flex-row items-baseline my-2">
 				<input
 					type="checkbox"
 					name="purchased"
@@ -89,14 +90,13 @@ export function ListItem({ name, items, listToken }) {
 				<label className="item-name ml-2.5 mr-2" htmlFor="purchased">
 					{name}
 				</label>
-				<div>
-					<button
-						className="delete-button ml-2 text-base"
-						onClick={handleDeleteItem}
-					>
-						delete
-					</button>
-				</div>
+
+				<button
+					className="delete-button bg-red-500 rounded text-white"
+					onClick={handleDeleteItem}
+				>
+					<BackspaceIcon className="h-4" />
+				</button>
 			</li>
 		</>
 	);

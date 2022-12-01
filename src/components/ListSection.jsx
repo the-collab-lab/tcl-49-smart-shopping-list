@@ -8,14 +8,14 @@ export const ListSection = ({ title, data, listToken, tagColor }) => {
 		<>
 			<div className="flex items-center mt-6 ">
 				<FontAwesomeIcon
-					className="mr-1 text-xl"
+					className="mr-1 text-xl pb-1"
 					icon={{
 						iconName: 'tag',
 						prefix: 'fas',
 					}}
 					style={{ color: tagColor }}
 				/>
-				<h3 className="font-semibold text-xl">{title}</h3>
+				<h3 className="font-semibold text-xl pb-1">{title}</h3>
 			</div>
 
 			<ul>

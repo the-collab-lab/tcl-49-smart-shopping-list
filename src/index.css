@@ -4,9 +4,9 @@
 
 body {
 	/* font-family: 'Inter', sans-serif; */
-	/* background-image: url(/public/img/food.jpg); */
-	/* background-repeat: no-repeat;
+	background-image: url(/public/img/food.jpg);
+	background-repeat: no-repeat;
 	background-size: cover;
 	background-position: center center;
-	background-attachment: fixed; */
+	background-attachment: fixed;
 }
