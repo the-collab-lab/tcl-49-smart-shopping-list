@@ -57,7 +57,7 @@ export function AddItem({ listToken, itemList }) {
 	};
 
 	return (
-		<div className="shopping-form-container w-full mx-auto py-4 bg-white  drop-shadow-lg py-9 pl-10">
+		<div className="main-layout shopping-form-container w-full mx-auto py-4 bg-white py-9 pl-10">
 			{message ? (
 				<div className="w-full flex flex-col items-center">
 					<h2 className="text-center text-rose-700 font-semibold text-base drop-shadow-xl">

@@ -32,7 +32,7 @@ export function Home({
 	};
 
 	return (
-		<div className="Home w-full mx-auto py-9 bg-white rounded-lg drop-shadow-lg text-center">
+		<div className="main-layout Home w-full mx-auto py-9 bg-white rounded-lg p-10 text-center">
 			{!listToken && (
 				<button
 					className="bg-green-600 py-2 px-3 rounded-full text-white shadow-md hover:text-green-600 hover:bg-transparent hover:border-solid hover:border-2 hover:font-semibold"
@@ -44,13 +44,13 @@ export function Home({
 
 			<form onSubmit={handleSubmit}>
 				<FormInput
-					label="Enter Token"
+					label="Enter a token here:"
 					type="text"
 					onChange={handleInputChange}
 					name="displayName"
 					id="token"
 					value={displayName}
-					placeholder="Enter your 3 word token"
+					placeholder="my test token"
 				/>
 				<p>{errorMessage}</p>
 				<Button type="submit">Join an existing list</Button>
