@@ -70,7 +70,7 @@ export function AddItem({ listToken, itemList }) {
 					</Link>
 				</div>
 			) : (
-				<form onSubmit={handleSubmit}>
+				<form onSubmit={handleSubmit} className="w-full px-4">
 					<FormInput
 						label="Item name"
 						type="text"
@@ -83,8 +83,10 @@ export function AddItem({ listToken, itemList }) {
 					/>
 					<div className="select-next-purchase-buttons mb-4">
 						<fieldset>
-							<legend>How soon will you buy this again?</legend>
-							<div className="radio-btn">
+							<legend className="font-inter font-normal">
+								How soon will you buy this again?
+							</legend>
+							<div className="radio-btn font-inter font-normal">
 								<label htmlFor="soon">
 									<input
 										type="radio"
@@ -97,7 +99,7 @@ export function AddItem({ listToken, itemList }) {
 									Soon
 								</label>
 							</div>
-							<div className="radio-btn">
+							<div className="radio-btn font-inter font-normal">
 								<label htmlFor="kindOfSoon">
 									<input
 										type="radio"
@@ -109,7 +111,7 @@ export function AddItem({ listToken, itemList }) {
 									Kind of Soon
 								</label>
 							</div>
-							<div className="radio-btn">
+							<div className="radio-btn font-inter font-normal">
 								<label htmlFor="notSoon">
 									<input
 										type="radio"
