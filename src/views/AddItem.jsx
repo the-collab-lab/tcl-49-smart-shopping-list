@@ -57,10 +57,12 @@ export function AddItem({ listToken, itemList }) {
 	};
 
 	return (
-		<div className="shopping-form-container w-full mx-auto py-4 pl-5 bg-white rounded-lg drop-shadow-lg">
+		<div className="shopping-form-container w-full mx-auto py-4 bg-white rounded-lg drop-shadow-lg">
 			{message ? (
-				<div>
-					<h2>{message}</h2>
+				<div className="w-full flex flex-col items-center">
+					<h2 className="text-center text-rose-700 font-semibold text-base drop-shadow-xl">
+						{message}
+					</h2>
 					<Link to="/list">
 						<button className="bg-green-600 py-2 px-3 my-3 rounded-full text-white shadow-md hover:text-green-600 hover:bg-transparent hover:border-solid hover:border-2 hover:font-semibold">
 							View the list
