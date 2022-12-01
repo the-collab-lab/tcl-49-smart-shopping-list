@@ -3,9 +3,13 @@
 @tailwind utilities;
 
 body {
-	background-image: url(/public/img/food.jpg);
+	/* background-image: url(/public/img/food.jpg); */
 	background-repeat: no-repeat;
 	background-size: cover;
 	background-position: center center;
 	background-attachment: fixed;
+}
+
+.Layout-main {
+	/* border: 1px solid #000000; */
 }

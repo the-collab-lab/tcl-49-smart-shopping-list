@@ -9,36 +9,36 @@ import './Layout.css';
 export function Layout() {
 	return (
 		<>
-			<div className="Layout mt-14 w-4/5 mx-auto">
-				<header className="Layout-header flex justify-center items-stretch mb-4">
-					<ShoppingCartIcon className="h-11 w-11 text-white mx-1 drop-shadow" />
-					<h1 className="text-3xl text-center font-bold underline text-white font-inter">
-						Smart shopping list
+			<div className="Layout mt-14 w-4/5 mx-auto ">
+				<header className="Layout-header  flex justify-center items-stretch mb-4">
+					{/* <ShoppingCartIcon className="h-11 w-11 text-black mx-2" /> */}
+					<h1 className="text-3xl text-center  font-bold text-white font-inter">
+						Shoppr.
 					</h1>
 				</header>
 				<main className="Layout-main">
 					<Outlet />
 				</main>
-				<nav className="Nav bg-white rounded-lg drop-shadow-lg mt-8 py-4 flex justify-around">
+				<nav className="Nav bg-green-400 rounded-lg drop-shadow-lg mt-8 py-4 flex justify-around">
 					<NavLink
 						to="/"
 						className="Nav-link font-inter flex items-center font-semibold hover:text-green-600 focus:text-green-600"
 					>
-						<HomeIcon className="h-4 w-4" />
+						<HomeIcon className="h-4 w-4 mr-4" />
 						Home
 					</NavLink>
 					<NavLink
 						to="/list"
 						className="Nav-link font-inter flex items-center font-semibold hover:text-green-600 focus:text-green-600"
 					>
-						<QueueListIcon className="h-4 w-4" />
+						<QueueListIcon className="h-4 w-4 mr-4" />
 						List
 					</NavLink>
 					<NavLink
 						to="/add-item"
 						className="Nav-link font-inter flex items-center font-semibold hover:text-green-600 focus:text-green-600"
 					>
-						<PlusCircleIcon className="h-4 w-4" />
+						<PlusCircleIcon className="h-4 w-4 mr-4" />
 						Add Item
 					</NavLink>
 				</nav>
