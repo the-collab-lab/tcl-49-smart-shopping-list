@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { ListSection } from '../components';
 import ListPrompt from '../components/ListPrompt';
 import { comparePurchaseUrgency } from '../api/firebase';
+import './Layout.css';
 
 export function List({ data, listToken }) {
 	const [searchField, setSearchField] = useState('');
@@ -36,13 +37,13 @@ export function List({ data, listToken }) {
 	return (
 		<>
 			{data.length ? (
-				<div className="bg-white rounded-lg drop-shadow-lg py-9 pl-5">
+				<div className="main-layout bg-white rounded-lg py-9 pl-10">
 					<form>
 						<label htmlFor="filter-items" className="font-inter font-semibold">
 							Filter items
 						</label>
 						<input
-							className="border-2 rounded ml-1 w-2/4"
+							className="border-2 rounded ml-4 w-2/4"
 							type="search"
 							name="filter-items"
 							id="filter-items"
@@ -53,21 +54,21 @@ export function List({ data, listToken }) {
 
 					<ListSection
 						data={buyingSoonList}
-						title="What to buy soon"
+						title="Buying soon"
 						listToken={listToken}
 						tagColor="red"
 					/>
 
 					<ListSection
 						data={kindaBuyingSoonList}
-						title="What to buy kind of soon"
+						title="Buying kind of soon"
 						listToken={listToken}
 						tagColor="yellow"
 					/>
 
 					<ListSection
 						data={notBuyingSoonList}
-						title="What not to buy soon"
+						title="Not buying soon"
 						listToken={listToken}
 						tagColor="green"
 					/>

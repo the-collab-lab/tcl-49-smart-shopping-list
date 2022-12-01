@@ -1,5 +1,4 @@
 import { Outlet, NavLink } from 'react-router-dom';
-import { ShoppingCartIcon } from '@heroicons/react/24/solid';
 import { HomeIcon } from '@heroicons/react/24/solid';
 import { QueueListIcon } from '@heroicons/react/24/solid';
 import { PlusCircleIcon } from '@heroicons/react/24/solid';
@@ -12,7 +11,7 @@ export function Layout() {
 			<div className="Layout mt-14 w-4/5 mx-auto ">
 				<header className="Layout-header  flex justify-center items-stretch mb-4">
 					{/* <ShoppingCartIcon className="h-11 w-11 text-black mx-2" /> */}
-					<h1 className="text-3xl text-center  font-bold text-white font-inter">
+					<h1 className="text-3xl text-center font-bold text-white font-inter mb-6">
 						Shoppr.
 					</h1>
 				</header>

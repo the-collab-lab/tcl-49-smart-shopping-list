@@ -6,16 +6,16 @@ import { faTag } from '@fortawesome/fontawesome-free-solid';
 export const ListSection = ({ title, data, listToken, tagColor }) => {
 	return (
 		<>
-			<div className="flex items-center mt-3">
+			<div className="flex items-center mt-6 ">
 				<FontAwesomeIcon
-					className="mr-1"
+					className="mr-2 text-xl"
 					icon={{
 						iconName: 'tag',
 						prefix: 'fas',
 					}}
 					style={{ color: tagColor }}
 				/>
-				<h3 className="font-semibold font-inter">{title}</h3>
+				<h3 className="font-semibold font-inter text-xl">{title}</h3>
 			</div>
 
 			<ul>
