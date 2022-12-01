@@ -37,13 +37,13 @@ export function List({ data, listToken }) {
 	return (
 		<>
 			{data.length ? (
-				<div className="main-layout bg-white rounded-lg py-9 pl-10">
+				<div className="main-layout bg-white py-9 pl-10">
 					<form>
-						<label htmlFor="filter-items" className="font-inter font-semibold">
-							Filter items
+						<label htmlFor="filter-items" className="font-medium">
+							Filter items:
 						</label>
 						<input
-							className="border-2 rounded ml-4 w-2/4"
+							className="border-2 rounded ml-3 w-2/4"
 							type="search"
 							name="filter-items"
 							id="filter-items"

@@ -1,11 +1,11 @@
 export function FormInput({ label, id, ...otherProps }) {
 	return (
-		<div className="group flex justify-center py-4">
-			<label className="font-inter font-semibold" htmlFor={id}>
+		<div className="group flex py-4">
+			<label className="font-medium" htmlFor={id}>
 				{label}
 			</label>
 			<input
-				className="border-2 rounded ml-1 w-2/4 pl-2 italic"
+				className="border-2 rounded ml-3 w-2/4 pl-2"
 				id={id}
 				{...otherProps}
 			/>

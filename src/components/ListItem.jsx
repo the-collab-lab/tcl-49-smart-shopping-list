@@ -91,7 +91,7 @@ export function ListItem({ name, items, listToken }) {
 				</label>
 				<div>
 					<button
-						className="delete-button ml-2 text-base font-inter"
+						className="delete-button ml-2 text-base"
 						onClick={handleDeleteItem}
 					>
 						delete

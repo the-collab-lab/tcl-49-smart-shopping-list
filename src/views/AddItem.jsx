@@ -57,7 +57,7 @@ export function AddItem({ listToken, itemList }) {
 	};
 
 	return (
-		<div className="shopping-form-container w-full mx-auto py-4 bg-white rounded-lg drop-shadow-lg">
+		<div className="shopping-form-container w-full mx-auto py-4 bg-white  drop-shadow-lg py-9 pl-10">
 			{message ? (
 				<div className="w-full flex flex-col items-center">
 					<h2 className="text-center text-rose-700 font-semibold text-base drop-shadow-xl">
@@ -72,23 +72,24 @@ export function AddItem({ listToken, itemList }) {
 			) : (
 				<form onSubmit={handleSubmit} className="w-full px-4">
 					<FormInput
-						label="Item name"
+						label="Add an item here:"
 						type="text"
 						onChange={handleChange}
 						name="itemName"
 						id="itemName"
 						required
-						placeholder="item name"
+						placeholder="Loaf of bread"
 						value={itemName}
 					/>
 					<div className="select-next-purchase-buttons mb-4">
 						<fieldset>
-							<legend className="font-inter font-normal">
+							<legend className="font-normal">
 								How soon will you buy this again?
 							</legend>
-							<div className="radio-btn font-inter font-normal">
+							<div className="radio-btn font-normal">
 								<label htmlFor="soon">
 									<input
+										className="mr-2"
 										type="radio"
 										name="daysUntilNextPurchase"
 										id="soon"
@@ -99,21 +100,23 @@ export function AddItem({ listToken, itemList }) {
 									Soon
 								</label>
 							</div>
-							<div className="radio-btn font-inter font-normal">
+							<div className="radio-btn font-normal">
 								<label htmlFor="kindOfSoon">
 									<input
+										className="mr-2"
 										type="radio"
 										name="daysUntilNextPurchase"
 										id="kindOfSoon"
 										value={14 || daysUntilNextPurchase}
 										onChange={handleChange}
 									/>
-									Kind of Soon
+									Kind of soon
 								</label>
 							</div>
-							<div className="radio-btn font-inter font-normal">
+							<div className="radio-btn font-normal">
 								<label htmlFor="notSoon">
 									<input
+										className="mr-2"
 										type="radio"
 										name="daysUntilNextPurchase"
 										id="notSoon"
