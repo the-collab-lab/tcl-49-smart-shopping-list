@@ -18,24 +18,24 @@ export function Layout() {
 				<main className="Layout-main">
 					<Outlet />
 				</main>
-				<nav className="Nav bg-green-400 rounded-lg drop-shadow-lg mt-8 py-4 flex justify-around">
+				<nav className="Nav bg-green-700 rounded-lg drop-shadow-lg mt-8 py-4 flex justify-around">
 					<NavLink
 						to="/"
-						className="Nav-link flex text-white items-center font-semibold hover:text-green-600 focus:text-green-600"
+						className="Nav-link flex text-white items-center font-semibold hover:rounded hover:animate-bounce"
 					>
 						<HomeIcon className="h-4 w-4 mr-4" />
 						Home
 					</NavLink>
 					<NavLink
 						to="/list"
-						className="Nav-link flex text-white items-center font-semibold hover:text-green-600 focus:text-green-600"
+						className="Nav-link flex text-white items-center font-semibold hover:rounded hover:animate-bounce "
 					>
 						<QueueListIcon className="h-4 w-4 mr-4" />
 						List
 					</NavLink>
 					<NavLink
 						to="/add-item"
-						className="Nav-link flex text-white items-center font-semibold hover:text-green-600 focus:text-green-600"
+						className="Nav-link flex text-white items-center font-semibold hover:rounded hover:animate-bounce "
 					>
 						<PlusCircleIcon className="h-4 w-4 mr-4" />
 						Add Item
@@ -44,7 +44,7 @@ export function Layout() {
 
 				<footer className="text-center text-white m-20">
 					<Link to="/https://github.com/the-collab-lab/tcl-49-smart-shopping-list">
-						Made with 💛 & 🔥 and from TCL 47
+						Made with 💛 & 🔥 and from TCL 49
 					</Link>
 				</footer>
 			</div>
