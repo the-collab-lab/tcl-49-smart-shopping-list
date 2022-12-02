@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Button, FormInput } from '../components';
+import { FormInput } from '../components';
 import { Link } from 'react-router-dom';
 import { addItem } from '../api';
 
@@ -57,7 +57,7 @@ export function AddItem({ listToken, itemList }) {
 	};
 
 	return (
-		<div className="main-layout shopping-form-container w-full mx-auto py-4 bg-white py-9 pl-10">
+		<div className=" w-full mx-auto bg-white p-6">
 			{message ? (
 				<div className="w-full flex flex-col items-center">
 					<h2 className="text-center text-blue-500 font-semibold text-base drop-shadow-xl">
