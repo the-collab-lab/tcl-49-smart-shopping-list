@@ -1,7 +1,7 @@
 import React from 'react';
 import { ListItem } from './ListItem';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTag } from '@fortawesome/fontawesome-free-solid';
+// import { faTag } from '@fortawesome/fontawesome-free-solid';
 
 export const ListSection = ({ title, data, listToken, tagColor }) => {
 	return (
