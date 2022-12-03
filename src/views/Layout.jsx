@@ -42,7 +42,7 @@ export function Layout() {
 					</NavLink>
 				</nav>
 
-				<footer className="text-white text-center">
+				<footer className="text-white text-center mt-10">
 					<Link to="/https://github.com/the-collab-lab/tcl-49-smart-shopping-list">
 						Made with 💛 & 🔥 and from TCL 49
 					</Link>
