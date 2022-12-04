@@ -120,8 +120,6 @@ export async function deleteItem(listId, docId, itemData) {
 	const deleteDocRef = doc(db, listId, docId);
 
 	await deleteDoc(deleteDocRef, itemData);
-
-	console.log('data', deleteDocRef);
 }
 
 export async function checkToken(tokenName = '') {

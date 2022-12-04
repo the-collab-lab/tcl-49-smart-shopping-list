@@ -21,21 +21,21 @@ export function Layout() {
 				<nav className="bg-green-700 rounded-lg drop-shadow-lg mt-8 py-4 flex justify-around">
 					<NavLink
 						to="/"
-						className="flex text-white items-center font-semibold hover:rounded hover:animate-bounce"
+						className="flex text-white items-center font-semibold"
 					>
 						<HomeIcon className="h-4 w-4 mr-4" />
 						Home
 					</NavLink>
 					<NavLink
 						to="/list"
-						className=" flex text-white items-center font-semibold hover:rounded hover:animate-bounce "
+						className=" flex text-white items-center font-semibold "
 					>
 						<QueueListIcon className="h-4 w-4 mr-4" />
 						List
 					</NavLink>
 					<NavLink
 						to="/add-item"
-						className="flex text-white items-center font-semibold hover:rounded hover:animate-bounce "
+						className="flex text-white items-center font-semibold "
 					>
 						<PlusCircleIcon className="h-4 w-4 mr-4" />
 						Add Item

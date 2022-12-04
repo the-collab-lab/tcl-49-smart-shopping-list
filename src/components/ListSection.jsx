@@ -3,7 +3,13 @@ import { ListItem } from './ListItem';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 // import { faTag } from '@fortawesome/fontawesome-free-solid';
 
-export const ListSection = ({ title, data, listToken, tagColor }) => {
+export const ListSection = ({
+	title,
+	// filteredListItems,
+	data,
+	listToken,
+	tagColor,
+}) => {
 	return (
 		<>
 			<div className="flex items-center mt-6 ">

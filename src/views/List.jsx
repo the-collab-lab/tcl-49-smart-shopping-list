@@ -17,7 +17,6 @@ export function List({ data, listToken }) {
 	);
 
 	const sortedList = comparePurchaseUrgency(data);
-	console.log(sortedList);
 
 	const buyingSoonList = sortedList.filter(
 		({ daysUntilNextPurchase }) => daysUntilNextPurchase < 7,
