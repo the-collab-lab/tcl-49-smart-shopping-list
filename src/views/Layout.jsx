@@ -43,7 +43,7 @@ export function Layout() {
 				</nav>
 
 				<footer className="text-white text-center mt-10">
-					<Link to="/https://github.com/the-collab-lab/tcl-49-smart-shopping-list">
+					<Link to="https://github.com/the-collab-lab/tcl-49-smart-shopping-list">
 						Made with 💛 & 🔥 from TCL 49
 					</Link>
 				</footer>
