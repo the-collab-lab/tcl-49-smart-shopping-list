@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { ListSection } from '../components';
 import ListPrompt from '../components/ListPrompt';
 import { comparePurchaseUrgency } from '../api/firebase';
+import './Layout.css';
 
 export function List({ data, listToken }) {
 	const [searchField, setSearchField] = useState('');
@@ -16,7 +17,6 @@ export function List({ data, listToken }) {
 	);
 
 	const sortedList = comparePurchaseUrgency(data);
-	console.log(sortedList);
 
 	const buyingSoonList = sortedList.filter(
 		({ daysUntilNextPurchase }) => daysUntilNextPurchase < 7,
@@ -36,10 +36,13 @@ export function List({ data, listToken }) {
 	return (
 		<>
 			{data.length ? (
-				<div>
+				<div className="main-layout bg-white p-6">
 					<form>
-						<label htmlFor="filter-items">Filter items</label>
+						<label htmlFor="filter-items" className="font-medium lg:block">
+							Filter items:
+						</label>
 						<input
+							className="border-2 rounded w-full px-4 py-2 mt-3 lg:w-1/2"
 							type="search"
 							name="filter-items"
 							id="filter-items"
@@ -50,21 +53,21 @@ export function List({ data, listToken }) {
 
 					<ListSection
 						data={buyingSoonList}
-						title="What to buy soon"
+						title="Buying soon"
 						listToken={listToken}
 						tagColor="red"
 					/>
 
 					<ListSection
 						data={kindaBuyingSoonList}
-						title="What to buy kind of soon"
+						title="Buying kind of soon"
 						listToken={listToken}
 						tagColor="yellow"
 					/>
 
 					<ListSection
 						data={notBuyingSoonList}
-						title="What not to buy soon"
+						title="Not buying soon"
 						listToken={listToken}
 						tagColor="green"
 					/>
