@@ -16,7 +16,7 @@ export function List({ data, listToken }) {
 		name.toLowerCase().includes(searchField),
 	);
 
-	const sortedList = comparePurchaseUrgency(data);
+	const sortedList = comparePurchaseUrgency(filteredListItems);
 
 	const buyingSoonList = sortedList.filter(
 		({ daysUntilNextPurchase }) => daysUntilNextPurchase < 7,
