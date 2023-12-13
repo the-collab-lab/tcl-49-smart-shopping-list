@@ -1896,10 +1896,10 @@
   resolved "https://registry.npmjs.org/@testing-library/user-event/-/user-event-14.3.0.tgz"
   integrity sha512-P02xtBBa8yMaLhK8CzJCIns8rqwnF6FxhR9zs810flHOBXUYCFjLd8Io1rQrAkQRWEmW2PGdZIEdMxf/KLsqFA==
 
-"@the-collab-lab/shopping-list-utils@^2.1.0":
-  version "2.1.0"
-  resolved "https://registry.npmjs.org/@the-collab-lab/shopping-list-utils/-/shopping-list-utils-2.1.0.tgz"
-  integrity sha512-xIROvCCKh1PJOyaG1MVv59PnsLiZ4s968ks+bwsrgiszRjfhw16FGw7OOxVwXAqRFMdF80UmI6DuJR5da9Wsgg==
+"@the-collab-lab/shopping-list-utils@^2.2.0":
+  version "2.2.0"
+  resolved "https://registry.npmjs.org/@the-collab-lab/shopping-list-utils/-/shopping-list-utils-2.2.0.tgz"
+  integrity sha512-nEN1z/SEOIWO+8JWIgPDNUkrXmXqNomSh5aiZDNdiaUH/JYqyNeXmEOldtMqAfLicSRiFkapcAIlrUUnPzNaog==
 
 "@tootallnate/once@2":
   version "2.0.0"
