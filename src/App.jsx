@@ -5,7 +5,7 @@ import { Routes, Route, useNavigate } from 'react-router-dom';
 import { getItemData, streamListItems } from './api';
 import { useStateWithStorage } from './utils';
 import { generateToken } from '@the-collab-lab/shopping-list-utils';
-import { ArchivalNoticeModal } from '@the-collab-lab/shopping-list-utils';
+// import { ArchivalNoticeModal } from '@the-collab-lab/shopping-list-utils';
 
 export function App() {
 	const navigate = useNavigate();
@@ -45,7 +45,7 @@ export function App() {
 				path="/"
 				element={
 					<>
-						<ArchivalNoticeModal />
+						{/* <ArchivalNoticeModal /> */}
 						<Layout />
 					</>
 				}

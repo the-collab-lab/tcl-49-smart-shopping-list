@@ -1,4 +1,4 @@
-import { Outlet, NavLink, Link } from 'react-router-dom';
+import { Outlet, NavLink } from 'react-router-dom';
 import { HomeIcon } from '@heroicons/react/24/solid';
 import { QueueListIcon } from '@heroicons/react/24/solid';
 import { PlusCircleIcon } from '@heroicons/react/24/solid';
@@ -43,9 +43,13 @@ export function Layout() {
 				</nav>
 
 				<footer className="text-white text-center mt-10">
-					<Link to="https://github.com/the-collab-lab/tcl-49-smart-shopping-list">
+					<a
+						href="https://github.com/the-collab-lab/tcl-49-smart-shopping-list"
+						target="_"
+						rel="noopenener noreferrer"
+					>
 						Made with 💛 & 🔥 from TCL 49
-					</Link>
+					</a>
 				</footer>
 			</div>
 		</>
